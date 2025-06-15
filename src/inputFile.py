@@ -1,8 +1,8 @@
 from typing import Optional
 
-def inputWhole(day:int):
-    if(day):
-        filePath = join("inputFiles", f"{day}.txt")
+def inputWhole(dayNum:int):
+    if(dayNum):
+        filePath = join("inputFiles", f"day{dayNum}.txt")
         pass
     else:
         filePath = "input.txt"
@@ -16,9 +16,9 @@ def inputWhole(day:int):
 
 from os.path import join
 
-def inputLines(day:int):
-    if(day):
-        filePath = join("inputFiles", f"day{day}.txt")
+def inputLines(dayNum:int):
+    if(dayNum):
+        filePath = join("inputFiles", f"day{dayNum}.txt")
         pass
     else:
         filePath = "input.txt"
@@ -32,9 +32,9 @@ def inputLines(day:int):
          idx+=1
     pass
 
-def inputChars(day:int):
-    if(day):
-        filePath = join("inputFiles", f"{day}.txt")
+def inputChars(dayNum:int):
+    if(dayNum):
+        filePath = join("inputFiles", f"day{dayNum}.txt")
         pass
     else:
         filePath = "input.txt"
