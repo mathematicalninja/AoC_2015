@@ -4,7 +4,7 @@ from typing import Literal, List
 from src.inputFile import inputLines
 
 def lhw():
-     for line in inputLines("2"):
+     for line in inputLines(2):
         first = line.find("x")
         second = line[first+1:].find("x")+first
         l = int(line[:first])

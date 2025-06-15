@@ -1,6 +1,6 @@
 from typing import Optional
 
-def inputWhole(day:Optional[str]):
+def inputWhole(day:int):
     if(day):
         filePath = join("inputFiles", f"{day}.txt")
         pass
@@ -16,7 +16,7 @@ def inputWhole(day:Optional[str]):
 
 from os.path import join
 
-def inputLines(day:Optional[str]):
+def inputLines(day:int):
     if(day):
         filePath = join("inputFiles", f"{day}.txt")
         pass
@@ -32,7 +32,7 @@ def inputLines(day:Optional[str]):
          idx+=1
     pass
 
-def inputChars(day:Optional[str]):
+def inputChars(day:int):
     if(day):
         filePath = join("inputFiles", f"{day}.txt")
         pass
@@ -49,8 +49,7 @@ def inputChars(day:Optional[str]):
     pass
 
 def inputWhole_example(exStr:str):
-    yield exStr
-    raise StopIteration
+    return exStr
 
 
 

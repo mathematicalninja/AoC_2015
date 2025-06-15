@@ -1,6 +1,6 @@
 from icecream import ic
 from typing import Literal
-import src.inputFile as inputFile
+from src.inputFile import inputChars
 
 
 def gift(x:int,y:int, Logs:dict[int, dict[int, int]], total:int):
@@ -42,7 +42,7 @@ def part1():
     y=0
     Logs, total =  gift(x, y, Logs, total)
 
-    for char in inputFile.inputChars("3"):
+    for char in inputChars(3):
         dx,dy = move(char) # type: ignore -- File contains correct characters.
         x,y = x+dx, y+dy
         Logs, total = gift(x, y, Logs, total)
@@ -63,7 +63,7 @@ def part2():
 
     santa:bool= True
 
-    for char in inputFile.inputChars("3"):
+    for char in inputChars(3):
         dx,dy = move(char) # type: ignore -- File contains correct characters.
         if(santa):
             x,y = x+dx, y+dy
