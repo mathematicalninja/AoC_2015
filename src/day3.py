@@ -1,6 +1,6 @@
 from icecream import ic
-from typing import Literal
-from src.inputFile import inputChars
+from typing import Literal, Generator, Any
+from inputFile import inputChars
 
 
 def gift(x:int,y:int, Logs:dict[int, dict[int, int]], total:int):
@@ -33,7 +33,7 @@ def move(char:Literal[">", "<", "^", "v", ]):
         case "v":
             return (0,-1)
 
-def part1():
+def part1(chars: Generator[str, Any, None]):
     Logs = {}
     total = 0
 
@@ -42,13 +42,14 @@ def part1():
     y=0
     Logs, total =  gift(x, y, Logs, total)
 
-    for char in inputChars(3):
+    for char in chars:
+        print(char)
         dx,dy = move(char) # type: ignore -- File contains correct characters.
         x,y = x+dx, y+dy
         Logs, total = gift(x, y, Logs, total)
     return total
 
-def part2():
+def part2(chars: Generator[str, Any, None]):
     Logs = {}
     total = 0
 
@@ -63,7 +64,7 @@ def part2():
 
     santa:bool= True
 
-    for char in inputChars(3):
+    for char in chars:
         dx,dy = move(char) # type: ignore -- File contains correct characters.
         if(santa):
             x,y = x+dx, y+dy
@@ -79,5 +80,7 @@ def part2():
 
 
 if __name__ == "__main__":
-    print("part 1: ", part1())
-    print("part 2: ", part2())
+    chars1 = inputChars(3)
+    print("part 1: ", part1(chars1))
+    chars2 = inputChars(3)
+    print("part 2: ", part2(chars2))

@@ -1,5 +1,5 @@
 from icecream import ic
-from src.inputFile import inputChars, inputLines
+from inputFile import inputChars, inputLines
 from typing import Generator, Any
 
 

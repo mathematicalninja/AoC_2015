@@ -1,5 +1,5 @@
 from icecream import ic
-import src.inputFile as inputFile
+import inputFile as inputFile
 from typing import Generator, Any
 from hashlib import md5
 

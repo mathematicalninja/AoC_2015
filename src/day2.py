@@ -1,7 +1,7 @@
 from icecream import ic
 from typing import Generator, Any
 
-from src.inputFile import inputLines
+from inputFile import inputLines
 
 def lhw(line):
     first = line.find("x")
