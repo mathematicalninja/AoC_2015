@@ -1,9 +1,9 @@
 from unittest import TestCase
 from typing import List, Tuple
 
-from inputFile import inputChar_example
+from src.inputFile import inputChar_example
 
-from day1Redo import part1, part2
+from src.day1Redo import part1, part2
 
 testCases_part1:List[Tuple[str,int]] = [
     ("(())",0), ("()()" ,0),

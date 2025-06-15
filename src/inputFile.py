@@ -1,4 +1,4 @@
-def inputFile():
+def inputWhole():
     with open("input.txt","r") as file:
         r = file.read()
     while True:
@@ -25,7 +25,7 @@ def inputChars():
          idx+=1
     pass
 
-def inputFile_example(exStr:str):
+def inputWhole_example(exStr:str):
     yield exStr
     raise StopIteration
 

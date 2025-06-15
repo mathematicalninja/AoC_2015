@@ -3,7 +3,7 @@
 
 from unittest import TestCase
 from typing import List, Tuple
-from inputFile import inputChar_example, inputLines_example
+from src.inputFile import inputChar_example, inputLines_example
 
 from day4 import part1, part2
 

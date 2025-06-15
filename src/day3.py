@@ -1,6 +1,6 @@
 from icecream import ic
 from typing import Literal
-import inputFile
+import src.inputFile as inputFile
 
 
 def gift(x:int,y:int, Logs:dict[int, dict[int, int]], total:int):

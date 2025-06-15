@@ -1,7 +1,7 @@
 from icecream import ic
 from typing import Literal, List
 
-from inputFile import inputLines
+from src.inputFile import inputLines
 
 def lhw():
      for line in inputLines():
@@ -28,7 +28,7 @@ def part1():
     return total
 
 
-def day2(part:Literal[1,2]=1):
+def part2():
     total = 0
     for l,h,w in lhw():
         # wrap
@@ -45,4 +45,4 @@ def day2(part:Literal[1,2]=1):
 
 if __name__ == "__main__":
     print("part 1: " , part1())
-    print("part 2: " , day2(2))
+    print("part 2: " , part2())
