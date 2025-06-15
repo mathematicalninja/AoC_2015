@@ -1,8 +1,10 @@
 def inputFile():
     with open("input.txt","r") as file:
         r = file.read()
-    yield r
-    raise StopIteration
+    while True:
+        yield r
+    pass
+
 
 
 def inputLines():
