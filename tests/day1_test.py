@@ -3,7 +3,7 @@ from typing import List, Tuple
 
 from src.inputFile import inputChar_example
 
-from src.day1Redo import part1, part2
+from src.day1 import part1, part2
 
 testCases_part1:List[Tuple[str,int]] = [
     ("(())",0), ("()()" ,0),

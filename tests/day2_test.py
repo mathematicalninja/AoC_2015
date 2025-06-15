@@ -4,7 +4,7 @@ from os.path import isfile, join
 
 from src.inputFile import inputLines_example, inputLines
 
-from src.day2Redo import part1, part2
+from src.day2 import part1, part2
 
 testCases_part1:List[Tuple[str,int]]=[
     ("2x3x4", 58),
