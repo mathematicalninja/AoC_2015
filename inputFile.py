@@ -1,8 +1,6 @@
 def inputFile():
-
     with open("input.txt","r") as file:
         r = file.read()
-
     yield r
     raise StopIteration
 
@@ -26,7 +24,6 @@ def inputChars():
     pass
 
 def inputFile_example(exStr:str):
-
     yield exStr
     raise StopIteration
 
