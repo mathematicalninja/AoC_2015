@@ -43,7 +43,6 @@ def part1(chars: Generator[str, Any, None]):
     Logs, total =  gift(x, y, Logs, total)
 
     for char in chars:
-        print(char)
         dx,dy = move(char) # type: ignore -- File contains correct characters.
         x,y = x+dx, y+dy
         Logs, total = gift(x, y, Logs, total)
