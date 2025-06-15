@@ -7,7 +7,8 @@ from src.inputFile import inputLines_example, inputLines
 from src.day4 import part1, part2
 
 testCases_part1:List[Tuple[str,int]]=[
-
+("abcdef", 609043),
+("pqrstuv", 1048970)
 ]
 
 testCases_part2:List[Tuple[str,int]]=[
