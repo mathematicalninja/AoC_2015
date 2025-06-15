@@ -1,8 +1,10 @@
 from unittest import TestCase
 from typing import List, Tuple
-from src.inputFile import inputWhole_example
+from os.path import isfile, join
 
-# from src.dayDAYNUMBER import part1, part2
+from src.inputFile import inputWhole_example, inputWhole
+
+from src.dayDAYNUMBER import part1, part2
 
 testCases_part1:List[Tuple[str,int]]=[
 
@@ -15,9 +17,36 @@ testCases_part2:List[Tuple[str,int]]=[
 class Tests(TestCase):
     def test_part1(self):
         for case in testCases_part1:
-            # self.assertEqual(part1(inputWhole_example(case[0])),case[1])
+            self.assertEqual(part1(inputWhole_example(case[0])),case[1])
             pass
     def test_part2(self):
         for case in testCases_part2:
-            # self.assertEqual(part2(inputWhole_example(case[0])),case[1])
+            self.assertEqual(part2(inputWhole_example(case[0])),case[1])
+            pass
+
+    def test_answer1(self):
+        answerPath = join("answers", "dayDAYNUMBER.txt")
+        inputPath = join("inputFiles", "dayDAYNUMBER.txt")
+        if isfile(answerPath) and isfile(inputPath):
+            with open (answerPath) as A:
+                answer1, answer2 = A.readlines()
+            fullinput = next(inputWhole(DAYNUMBER))
+
+            self.assertEqual(part1(fullinput),answer1)
+
+        else:
+            pass
+
+    def test_answer2(self):
+        answerPath = join("answers", "dayDAYNUMBER.txt")
+        inputPath = join("inputFiles", "dayDAYNUMBER.txt")
+        if isfile(answerPath) and isfile(inputPath):
+            with open (answerPath) as A:
+                answer1, answer2 = A.readlines()
+            fullinput = next(inputWhole(DAYNUMBER))
+
+            self.assertEqual(part2(fullinput),answer2)
+
+
+        else:
             pass
