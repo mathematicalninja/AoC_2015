@@ -1,25 +1,48 @@
-def inputWhole():
-    with open("input.txt","r") as file:
+from typing import Optional
+
+def inputWhole(day:Optional[str]):
+    if(day):
+        filePath = join("inputFiles", f"{day}.txt")
+        pass
+    else:
+        filePath = "input.txt"
+
+    with open(filePath,"r") as file:
         r = file.read()
+
     while True:
         yield r
-    pass
 
 
+from os.path import join
 
-def inputLines():
-    idx = 0
-    with open("input.txt","r") as file:
+def inputLines(day:Optional[str]):
+    if(day):
+        filePath = join("inputFiles", f"{day}.txt")
+        pass
+    else:
+        filePath = "input.txt"
+
+    with open(filePath,"r") as file:
         fileLines = file.readlines()
+
+    idx = 0
     while idx < len(fileLines):
          yield fileLines[idx]
          idx+=1
     pass
 
-def inputChars():
-    idx = 0
-    with open("input.txt","r") as file:
+def inputChars(day:Optional[str]):
+    if(day):
+        filePath = join("inputFiles", f"{day}.txt")
+        pass
+    else:
+        filePath = "input.txt"
+
+    with open(filePath,"r") as file:
         fileChars = file.read()
+
+    idx = 0
     while idx < len(fileChars):
          yield fileChars[idx]
          idx+=1

@@ -5,7 +5,7 @@ from unittest import TestCase
 from typing import List, Tuple
 from src.inputFile import inputChar_example, inputLines_example
 
-from day4 import part1, part2
+from src.day4 import part1, part2
 
 testCases_part1:List[Tuple[str,int]]=[
     ("abcdef", 609043),

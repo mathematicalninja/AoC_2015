@@ -2,7 +2,7 @@ from unittest import TestCase
 from typing import List, Tuple
 from src.inputFile import inputChar_example, inputLines_example
 
-# from day* import part1, part2
+# from src.dayDAYNUMBER import part1, part2
 
 testCases_part1:List[Tuple[str,int]]=[
 

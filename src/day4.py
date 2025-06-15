@@ -44,8 +44,8 @@ if __name__ == "__main__":
     # chars2 = inputFile.inputChars()
     # print("part 2: ", part2(chars))
 
-    lines = inputFile.inputLines()
+    lines = inputFile.inputLines("4")
     print("part 1: ", part1(lines))
-    lines2 = inputFile.inputLines()
+    lines2 = inputFile.inputLines("4")
     print("part 2: ", part2(lines2))
     pass

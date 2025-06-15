@@ -42,7 +42,7 @@ def part1():
     y=0
     Logs, total =  gift(x, y, Logs, total)
 
-    for char in inputFile.inputChars():
+    for char in inputFile.inputChars("3"):
         dx,dy = move(char) # type: ignore -- File contains correct characters.
         x,y = x+dx, y+dy
         Logs, total = gift(x, y, Logs, total)
@@ -63,7 +63,7 @@ def part2():
 
     santa:bool= True
 
-    for char in inputFile.inputChars():
+    for char in inputFile.inputChars("3"):
         dx,dy = move(char) # type: ignore -- File contains correct characters.
         if(santa):
             x,y = x+dx, y+dy

@@ -4,15 +4,19 @@ from typing import Generator, Any
 from src.inputFile import inputChars
 
 def part1(chars: Generator[str, Any, None]):
+    for char in chars:
+        pass
     pass
 
 def part2(chars: Generator[str, Any, None]):
+    for char in chars:
+        pass
     pass
 
 
 if __name__ == "__main__":
-    chars = inputChars()
+    chars = inputChars(DAYNUMBER)
     print("part 1: ", part1(chars))
-    chars2 = inputChars()
+    chars2 = inputChars(DAYNUMBER)
     print("part 2: ", part2(chars))
     pass
