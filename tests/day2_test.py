@@ -29,12 +29,12 @@ class Tests(TestCase):
     def test_answer1(self):
         answerPath = join("answers", "day2.txt")
         inputPath = join("inputFiles", "day2.txt")
-        if isfile(answerPath) and isfile(inputPath):
+        if (isfile(answerPath) and isfile(inputPath)):
             with open (answerPath) as A:
                 answer1, answer2 = A.readlines()
             fullinput = inputLines(2)
 
-            self.assertEqual(part1(fullinput),answer1)
+            self.assertEqual(part1(fullinput),int(answer1.replace("\\n","")))
 
         else:
             pass
@@ -47,7 +47,8 @@ class Tests(TestCase):
                 answer1, answer2 = A.readlines()
             fullinput = inputLines(2)
 
-            self.assertEqual(part2(fullinput),answer2)
+            self.assertEqual(part2(fullinput),int(answer2.replace("\\n","")))
+
 
 
         else:

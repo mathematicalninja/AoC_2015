@@ -32,7 +32,8 @@ class Tests(TestCase):
                 answer1, answer2 = A.readlines()
             fullinput = next(inputWhole(DAYNUMBER))
 
-            self.assertEqual(part1(fullinput),answer1)
+            self.assertEqual(part1(fullinput),int(answer1.replace("\\n","")))
+
 
         else:
             pass
@@ -45,7 +46,8 @@ class Tests(TestCase):
                 answer1, answer2 = A.readlines()
             fullinput = next(inputWhole(DAYNUMBER))
 
-            self.assertEqual(part2(fullinput),answer2)
+            self.assertEqual(part2(fullinput),int(answer2.replace("\\n","")))
+
 
 
         else:
