@@ -29,7 +29,7 @@ class Tests(TestCase):
     def test_answer1(self):
         answerPath = join("answers", "day2.txt")
         inputPath = join("inputFiles", "day2.txt")
-        if (isfile(answerPath) and isfile(inputPath)):
+        if isfile(answerPath) and isfile(inputPath):
             with open (answerPath) as A:
                 answer1, answer2 = A.readlines()
             fullinput = inputLines(2)
