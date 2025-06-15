@@ -1,7 +1,7 @@
 from os.path import join
 from os import write
 
-def makeInput(dayNum:str):
+def makeInput(dayNum:int):
     # make f"inputFiles\day{day}.txt" file.
     filePath = join("inputFiles", f"day{dayNum}.txt")
     print("file",filePath)

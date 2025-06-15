@@ -6,7 +6,7 @@ from typing import List, TypedDict
 class OptionDic(TypedDict):
     externalStub: str # The Stub to be written before the ")", usually an int.
     externalName: str # The Full name, as displayed to the user
-    internalCode: str # The **internal** code that will be returned
+    internalCode: str | int # The **internal** code that will be returned
 
 
 class PrintFormat():
@@ -43,7 +43,7 @@ def selectFromDict(options:List[OptionDic], formatting: PrintFormat)->OptionDic:
 
         for idx in range(len(options)):
             selected = options[idx]
-            if inputRaw == selected["internalCode"]:
+            if inputRaw == str(selected["internalCode"]):
                 print(formatting.correctInputMessage(selected))
                 return selected
             pass
