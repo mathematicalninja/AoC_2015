@@ -129,7 +129,7 @@ def removeFile(type:Literal["src","test"],dayNum):
             srcPath = join("src", f"day{dayNum}.py.bak")
             FILE_REMOVE(srcPath)
         case "test":
-            testPath = join("tests", f"day{dayNum}_test.py.bak")
+            testPath = join("src","tests", f"day{dayNum}_test.py.bak")
             FILE_REMOVE(testPath)
 
 
@@ -151,7 +151,7 @@ def makeDay():
 
 def makeTest(dayNum:int,fileFormat:formatTypes):
     # make f"inputFiles\day{day}.txt" file.
-    filePath = join("tests", f"day{dayNum}_test.py")
+    filePath = join("src", "tests", f"day{dayNum}_test.py")
     print(f"making test: day{dayNum}_test.py")
     try:
         with open(filePath, "x") as file:
