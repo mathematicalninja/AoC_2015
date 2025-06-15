@@ -1,23 +1,22 @@
 from icecream import ic
-from typing import Literal, List
+from typing import Generator, Any
 
 from src.inputFile import inputLines
 
-def lhw():
-     for line in inputLines(2):
-        first = line.find("x")
-        second = line[first+1:].find("x")+first
-        l = int(line[:first])
-        h = int(line[first+1:second+1])
-        w = int(line[second+2:])
+def lhw(line):
+    first = line.find("x")
+    second = line[first+1:].find("x")+first
 
-        yield (l, h, w)
+    l = int(line[:first])
+    h = int(line[first+1:second+1])
+    w = int(line[second+2:])
 
+    return (l, h, w)
 
-
-def part1():
+def part1(lines: Generator[str, Any, None]):
     total = 0
-    for l,h,w in lhw():
+    for line in lines:
+        l, h, w, = lhw(line)
         A = l * h
         B = h * w
         C = w * l
@@ -27,10 +26,11 @@ def part1():
         total += (2*(A+B+C)+M)
     return total
 
-
-def part2():
+def part2(lines: Generator[str, Any, None]):
     total = 0
-    for l,h,w in lhw():
+    for line in lines:
+        l, h, w, = lhw(line)
+
         # wrap
         wrap = 2*(l+h+w-max(l,h,w))
         # bow
@@ -39,10 +39,9 @@ def part2():
     return total
 
 
-
-
-
-
 if __name__ == "__main__":
-    print("part 1: " , part1())
-    print("part 2: " , part2())
+    lines = inputLines(2)
+    print("part 1: ", part1(lines))
+    lines2 = inputLines(2)
+    print("part 2: ", part2(lines2))
+    pass
