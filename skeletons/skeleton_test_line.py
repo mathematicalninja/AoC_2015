@@ -4,7 +4,7 @@ from os.path import isfile, join
 
 from src.inputFile import inputLines_example, inputLines
 
-from src.dayDAYNUMBER import part1, part2
+# from src.dayDAYNUMBER import part1, part2
 
 testCases_part1:List[Tuple[str,int]]=[
 
@@ -17,11 +17,11 @@ testCases_part2:List[Tuple[str,int]]=[
 class Tests(TestCase):
     def test_part1(self):
         for case in testCases_part1:
-            self.assertEqual(part1(inputLines_example(case[0])),case[1])
+            # self.assertEqual(part1(inputLines_example(case[0])),case[1])
             pass
     def test_part2(self):
         for case in testCases_part2:
-            self.assertEqual(part2(inputLines_example(case[0])),case[1])
+            # self.assertEqual(part2(inputLines_example(case[0])),case[1])
             pass
 
 
@@ -31,9 +31,9 @@ class Tests(TestCase):
         if isfile(answerPath) and isfile(inputPath):
             with open (answerPath) as A:
                 answer1, answer2 = A.readlines()
-            fullinput = inputLines(DAYNUMBER)
+            # fullinput = inputLines(DAYNUMBER)
 
-            self.assertEqual(part1(fullinput),int(answer1.replace("\\n","")))
+            # self.assertEqual(part1(fullinput),int(answer1.replace("\\n","")))
 
 
         else:
@@ -45,9 +45,9 @@ class Tests(TestCase):
         if isfile(answerPath) and isfile(inputPath):
             with open (answerPath) as A:
                 answer1, answer2 = A.readlines()
-            fullinput = inputLines(DAYNUMBER)
+            # fullinput = inputLines(DAYNUMBER)
 
-            self.assertEqual(part2(fullinput),int(answer2.replace("\\n","")))
+            # self.assertEqual(part2(fullinput),int(answer2.replace("\\n","")))
 
 
         else:

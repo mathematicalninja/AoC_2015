@@ -11,7 +11,7 @@ def part2(file: str):
 
 
 if __name__ == "__main__":
-    File = inputWhole(DAYNUMBER)
-    print("part 1: ", part1(next(File)))
-    print("part 2: ", part2(next(File)))
+    # File = inputWhole(DAYNUMBER)
+    # print("part 1: ", part1(next(File)))
+    # print("part 2: ", part2(next(File)))
     pass

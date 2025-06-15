@@ -15,8 +15,8 @@ def part2(chars: Generator[str, Any, None]):
 
 
 if __name__ == "__main__":
-    chars = inputChars(DAYNUMBER)
-    print("part 1: ", part1(chars))
-    chars2 = inputChars(DAYNUMBER)
-    print("part 2: ", part2(chars))
+    # chars = inputChars(DAYNUMBER)
+    # print("part 1: ", part1(chars))
+    # chars2 = inputChars(DAYNUMBER)
+    # print("part 2: ", part2(chars))
     pass
