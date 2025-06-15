@@ -1,7 +1,7 @@
 from icecream import ic
 from typing import Generator, Any
 
-from src.inputFile import inputChars
+from inputFile import inputChars
 
 def part1(chars: Generator[str, Any, None]):
     for char in chars:

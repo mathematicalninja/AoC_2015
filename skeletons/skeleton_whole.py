@@ -1,7 +1,7 @@
 from icecream import ic
 from typing import Generator, Any
 
-from src.inputFile import inputWhole
+from inputFile import inputWhole
 
 def part1(file: str):
     pass
