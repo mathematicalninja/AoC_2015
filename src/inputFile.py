@@ -18,7 +18,7 @@ from os.path import join
 
 def inputLines(day:int):
     if(day):
-        filePath = join("inputFiles", f"{day}.txt")
+        filePath = join("inputFiles", f"day{day}.txt")
         pass
     else:
         filePath = "input.txt"
