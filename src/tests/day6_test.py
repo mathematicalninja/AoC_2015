@@ -19,6 +19,15 @@ testCases_part2:List[Tuple[str,int]]=[
 
 
 class Functions(TestCase):
+    def setUp(self) -> None:
+        self.lightbulbs = [
+            [0,1],
+            [1,0]
+        ]
+
+    def tearDown(self) -> None:
+        pass
+
     def test_splitThrough(self,line:str):
         split = splitThrough("turn on 0,0 through 999,999")
 
