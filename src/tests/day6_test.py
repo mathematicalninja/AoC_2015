@@ -4,7 +4,7 @@ from os.path import isfile, join
 
 from src.inputFile import inputLines_example, inputLines
 
-from src.day6 import part1, part2
+from src.day6 import part1, part2, getPair, getMode, splitThrough
 
 
 testCases_part1:List[Tuple[str,int]]=[
@@ -17,7 +17,38 @@ testCases_part2:List[Tuple[str,int]]=[
 
 ]
 
-class Tests(TestCase):
+
+class Functions(TestCase):
+    def test_splitThrough(self,line:str):
+        split = splitThrough("turn on 0,0 through 999,999")
+
+        self.assertEqual(split[1], "turn on")
+        self.assertEqual(split[1], "0,0")
+        self.assertEqual(split[2], "999,999")
+        pass
+
+
+    def test_getPair(self,lineFragment:str):
+        # ->Pair:
+
+        pair1 = getPair("0,0")
+        pair2 = getPair("999,999")
+        self.assertEqual(pair1, (0,0))
+        self.assertEqual(pair2, (999,999))
+        pass
+
+    def test_getMode(self,lineFragment:str):
+        # -> mode:
+        modeOn = getMode("turn on")
+        modeOff = getMode("turn off")
+        modeToggle = getMode("toggle")
+
+        self.assertEqual(modeOn, "on")
+        self.assertEqual(modeToggle, "toggle")
+        self.assertEqual(modeOff, "off")
+        pass
+
+class Parts(TestCase):
     def test_part1(self):
         for case in testCases_part1:
             self.assertEqual(part1(inputLines_example(case[0])),case[1])
@@ -26,6 +57,7 @@ class Tests(TestCase):
         for case in testCases_part2:
             self.assertEqual(part2(inputLines_example(case[0])),case[1])
             pass
+class Answers(TestCase):
 
 
     def test_answer1(self):
