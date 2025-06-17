@@ -1,5 +1,5 @@
 from icecream import ic
-from typing import Generator, Any, Literal, List
+from typing import Generator, Any, Literal, List, Tuple
 
 from inputFile import inputLines
 from os.path  import join
@@ -21,9 +21,9 @@ def makeBulbs()->List[List[Literal[0,1]]]:
     return bulbs
 
 
-def splitThrough(line:str):
+def splitThrough(line:str) -> Tuple[str,str,str]:
     # "turn on 0,0 through 999,999"
-    # ==>[ "turn on 0,0", "999,999"]
+    # ==>[ "turn on",  "0,0", "999,999"]
     pass
 
 
@@ -33,19 +33,19 @@ def getPair(lineFragment:str)->Pair:
     pass
 
 def getMode(lineFragment:str)->mode:
-    # turn on 0,0 ==> Literal['on']
-    # toggle 0,0 ==> Literal['toggle']
-    # turn off 499,499 ==> Literal['off']
+    # turn on ==> Literal['on']
+    # toggle  ==> Literal['toggle']
+    # turn off  ==> Literal['off']
     pass
 
 def inRange(currentPair:Pair,firstCorner:Pair,secondCorner:Pair)->bool:
     # note: backwards may be possible e.g. 9,9 -> 3,2
     pass
 
-def getCoordValue(coord:Pair)->Literal[0,1]:
+def getCoordValue(coord:Pair, lighbulbs: List[List[Literal[0,1]]])->Literal[0,1]:
     pass
 
-def actOnValue(value:Literal[0,1], action:mode):
+def actOnValue(value:Literal[0,1], action:mode, lighbulbs: List[List[Literal[0,1]]]):
     pass
 
 def actOnCoord(coord:Pair, action:mode):
