@@ -2,18 +2,21 @@ from unittest import TestCase
 from typing import List, Tuple
 from os.path import isfile, join
 
-from src.inputFile import inputLines_example, inputLines
+from src.inputFile import inputMultiLines_example, inputLines
 
-from src.day6 import part1, part2, getPair, getMode, splitThrough
+from src.day6 import part1, part2, parsePair,  splitThrough, check_between
 
 
-testCases_part1:List[Tuple[str,int]]=[
-    ("turn on 0,0 through 999,999", 1000000),
-    ("toggle 0,0 through 999,0", 1000),
-    ("turn off 499,499 through 500,500", 0)
+testCases_part1:List[Tuple[List[str],int]]=[
+    (["turn on 0,0 through 999,999"], 1000000),
+    (["toggle 0,0 through 999,0"], 1000),
+    (["turn off 499,499 through 500,500"], 0),
+
+    (["turn on 0,0 through 999,999","turn off 0,0 through 999,999"], 0),
 ]
 
-testCases_part2:List[Tuple[str,int]]=[
+testCases_part2:List[Tuple[List[str],int]]=[
+
 
 ]
 
@@ -24,24 +27,49 @@ class Functions(TestCase):
             [0,1],
             [1,0]
         ]
+        self.strOn = "turn on 0,0 through 1,1"
+        self.strOff = "turn off 0,0 through 1,1"
+        self.strToggle = "toggle 0,0 through 1,1"
 
     def tearDown(self) -> None:
         pass
 
-    def test_splitThrough(self,line:str):
-        split = splitThrough("turn on 0,0 through 999,999")
 
-        self.assertEqual(split[1], "turn on")
-        self.assertEqual(split[1], "0,0")
-        self.assertEqual(split[2], "999,999")
+    def test_splitThrough_numbers(self):
+        for string in [self.strOn, self.strOff, self.strToggle]:
+            with self.subTest(string=string):
+                split = splitThrough(string)
+                self.assertEqual(split[1], "0,0")
+                self.assertEqual(split[2], "1,1")
+            pass
         pass
 
+    def test_splitThrough_on(self):
+        split = splitThrough(self.strOn)
 
-    def test_getPair(self,lineFragment:str):
+        self.assertEqual(split[0], "on")
+        self.assertEqual(split[1], "0,0")
+        self.assertEqual(split[2], "1,1")
+
+    def test_splitThrough_off(self):
+        split = splitThrough(self.strOff)
+
+        self.assertEqual(split[0], "off")
+        self.assertEqual(split[1], "0,0")
+        self.assertEqual(split[2], "1,1")
+
+    def test_splitThrough_toggle(self):
+        split = splitThrough(self.strToggle)
+
+        self.assertEqual(split[0], "toggle")
+        self.assertEqual(split[1], "0,0")
+        self.assertEqual(split[2], "1,1")
+
+    def test_getPair(self):
         # ->Pair:
 
-        pair1 = getPair("0,0")
-        pair2 = getPair("999,999")
+        pair1 = parsePair("0,0")
+        pair2 = parsePair("999,999")
         self.assertEqual(pair1, (0,0))
         self.assertEqual(pair2, (999,999))
         pass
