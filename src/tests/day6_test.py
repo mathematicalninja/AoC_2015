@@ -4,7 +4,14 @@ from os.path import isfile, join
 
 from src.inputFile import inputMultiLines_example, inputLines
 
-from src.day6 import part1, part2, parsePair, splitThrough, check_between, getCoordValue, Bulbs
+from src.day6 import part1
+from src.day6 import part2
+from src.day6 import parsePair
+from src.day6 import splitThrough
+from src.day6 import check_between
+from src.day6 import getCoordValue
+from src.day6 import inRange
+from src.day6 import Bulbs
 
 
 testCases_part1:List[Tuple[List[str],int]]=[
@@ -89,6 +96,8 @@ class Functions(TestCase):
     def test_inRange(self):
 
         pass
+
+
     def test_getCoordValue(self):
         for pair in [[0,0], [1,1]]:
             with self.subTest(pair=pair):
