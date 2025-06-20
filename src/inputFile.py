@@ -1,4 +1,4 @@
-from typing import Optional
+from typing import Optional, List
 
 def inputWhole(dayNum:int):
     if(dayNum):
@@ -63,4 +63,11 @@ def inputChar_example(exStr:str):
 
 def inputLines_example(exStr:str):
     yield exStr
+    pass
+
+def inputMultiLines_example(exStrArr:List[str]):
+    idx = 0
+    while idx < len(exStrArr):
+        yield exStrArr[idx]
+        idx+=1
     pass
