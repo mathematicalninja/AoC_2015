@@ -86,7 +86,7 @@ def inRange(currentPair:Pair,firstCorner:Pair,secondCorner:Pair)->bool:
     return xCheck and yCheck
 
 def getCoordValue(coord:Pair, lighbulbs: List[List[Literal[0,1]]])->Literal[0,1]:
-    pass
+    return lightbulbs[coord[0]][coord[1]]
 
 def actOnValue(value:Literal[0,1], action:mode, lighbulbs: List[List[Literal[0,1]]]):
     pass

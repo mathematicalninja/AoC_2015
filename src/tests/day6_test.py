@@ -4,7 +4,7 @@ from os.path import isfile, join
 
 from src.inputFile import inputMultiLines_example, inputLines
 
-from src.day6 import part1, part2, parsePair,  splitThrough, check_between
+from src.day6 import part1, part2, parsePair, splitThrough, check_between, getCoordValue
 
 
 testCases_part1:List[Tuple[List[str],int]]=[
@@ -90,7 +90,15 @@ class Functions(TestCase):
 
         pass
     def test_getCoordValue(self):
-        pass
+        for pair in [[0,0], [1,1]]:
+            with self.subTest(pair=pair):
+                self.assertEqual(getCoordValue(coord=pair, lightbulbs=self.lightbulbs), 0)
+
+        for pair in [[1,0], [0,1]]:
+            with self.subTest(pair=pair):
+                self.assertEqual(getCoordValue(coord=pair, lightbulbs=self.lightbulbs), 1)
+    pass
+
     def test_actOnValue(self):
         pass
     def test_actOnCoord(self):
