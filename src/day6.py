@@ -6,10 +6,11 @@ from os.path  import join
 
 from utils.auxFile import makeAuxFile, clearAuxFile, readAuxFile, writeAuxFile
 
-type Pair = Tuple[int,int]
+type Pair = List[int]
 type mode = Literal["on","off","toggle"]
+type Bulbs = List[List[Literal[0,1]]]
 
-def makeBulbs()->List[List[Literal[0,1]]]:
+def makeBulbs()->Bulbs:
     bulbs = []
     for i in range(1000):
         line = []
@@ -85,28 +86,28 @@ def inRange(currentPair:Pair,firstCorner:Pair,secondCorner:Pair)->bool:
     )
     return xCheck and yCheck
 
-def getCoordValue(coord:Pair, lighbulbs: List[List[Literal[0,1]]])->Literal[0,1]:
+def getCoordValue(coord:Pair, lightbulbs: Bulbs)->Literal[0,1]:
     return lightbulbs[coord[0]][coord[1]]
 
-def actOnValue(value:Literal[0,1], action:mode, lighbulbs: List[List[Literal[0,1]]]):
+def actOnValue(value:Literal[0,1], action:mode, lighbulbs: Bulbs):
     pass
 
-def actOnCoord(coord:Pair, action:mode):
-    value = getCoordValue(coord)
-    actOnValue(value,action)
+def actOnCoord(coord:Pair, action:mode, lightbulbs: Bulbs):
+    value = getCoordValue(coord, lightbulbs)
+    actOnValue(value,action, lightbulbs)
     pass
 
 
-def parseLine(line:str, lightbulbs: List[List[Literal[0,1]]]) -> List[List[Literal[0,1]]]:
+def parseLine(line:str, lightbulbs: Bulbs) -> Bulbs:
     # turn on 0,0 through 999,999
     # toggle 0,0 through 999,0
     # turn off 499,499 through 500,500
     pass
 
-def auxToBulbs(aux)->List[List[Literal[0,1]]]:
+def auxToBulbs(aux)->Bulbs:
     pass
 
-def countBulbs(ligthbulbs:List[List[Literal[0,1]]])->int:
+def countBulbs(ligthbulbs:Bulbs)->int:
     pass
 
 def part1(lines: Generator[str, Any, None]):

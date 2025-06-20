@@ -4,7 +4,7 @@ from os.path import isfile, join
 
 from src.inputFile import inputMultiLines_example, inputLines
 
-from src.day6 import part1, part2, parsePair, splitThrough, check_between, getCoordValue
+from src.day6 import part1, part2, parsePair, splitThrough, check_between, getCoordValue, Bulbs
 
 
 testCases_part1:List[Tuple[List[str],int]]=[
@@ -23,7 +23,7 @@ testCases_part2:List[Tuple[List[str],int]]=[
 
 class Functions(TestCase):
     def setUp(self) -> None:
-        self.lightbulbs = [
+        self.lightbulbs: Bulbs = [
             [0,1],
             [1,0]
         ]
