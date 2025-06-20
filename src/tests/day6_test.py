@@ -94,6 +94,20 @@ class Functions(TestCase):
         pass
 
     def test_inRange(self):
+        z_z = [0,0]
+        o_o = [1,1]
+        z_o = [0,1]
+        o_z = [1,0]
+        t_t = [2,2]
+
+        self.assertTrue(inRange(o_o,z_z,t_t))
+        self.assertTrue(inRange(o_z,o_z,o_z))
+        self.assertTrue(inRange(o_z,o_o,o_z))
+        self.assertTrue(inRange(o_o,t_t,z_z)) # Reverse direction
+
+
+        self.assertFalse(inRange(z_z,t_t,o_o))
+        self.assertFalse(inRange(t_t,z_z,z_z))
 
         pass
 
