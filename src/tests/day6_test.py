@@ -72,17 +72,18 @@ class Functions(TestCase):
         pair2 = parsePair("999,999")
         self.assertEqual(pair1, (0,0))
         self.assertEqual(pair2, (999,999))
-        pass
 
-    def test_getMode(self,lineFragment:str):
-        # -> mode:
-        modeOn = getMode("turn on")
-        modeOff = getMode("turn off")
-        modeToggle = getMode("toggle")
 
-        self.assertEqual(modeOn, "on")
-        self.assertEqual(modeToggle, "toggle")
-        self.assertEqual(modeOff, "off")
+    def test_between(self):
+        self.assertTrue(check_between(1,1,1))
+        self.assertTrue(check_between(1,0,2))
+        self.assertTrue(check_between(1,2,0))
+        self.assertTrue(check_between(2,0,2))
+
+        self.assertFalse(check_between(6,1,1))
+        self.assertFalse(check_between(6,0,2))
+        self.assertFalse(check_between(6,2,0))
+        self.assertFalse(check_between(6,0,2))
         pass
 
 class Parts(TestCase):

@@ -73,7 +73,17 @@ def check_between(n:int,a:int,b:int)->bool:
 
 def inRange(currentPair:Pair,firstCorner:Pair,secondCorner:Pair)->bool:
     # note: backwards may be possible e.g. 9,9 -> 3,2
-    pass
+    xCheck = check_between(
+        currentPair[0],
+        firstCorner[0],
+        secondCorner[0]
+    )
+    yCheck = check_between(
+        currentPair[1],
+        firstCorner[1],
+        secondCorner[1]
+    )
+    return xCheck and yCheck
 
 def getCoordValue(coord:Pair, lighbulbs: List[List[Literal[0,1]]])->Literal[0,1]:
     pass
