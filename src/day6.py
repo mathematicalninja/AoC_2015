@@ -9,6 +9,7 @@ from utils.auxFile import makeAuxFile, clearAuxFile, readAuxFile, writeAuxFile
 type Pair = List[int]
 type mode = Literal["on","off","toggle"]
 type Bulbs = List[List[Literal[0,1]]]
+type value = Literal[0,1]
 
 def makeBulbs()->Bulbs:
     bulbs = []
@@ -62,7 +63,7 @@ def parsePair(lineFragment:str)->Pair:
     comma = lineFragment.find(",")
     x = int(lineFragment[:comma])
     y = int(lineFragment[comma+1:])
-    return (x,y)
+    return [x,y]
 
 def check_between(n:int,a:int,b:int)->bool:
     if a<=n and n<=b:
@@ -86,7 +87,7 @@ def inRange(currentPair:Pair,firstCorner:Pair,secondCorner:Pair)->bool:
     )
     return xCheck and yCheck
 
-def getCoordValue(coord:Pair, lightbulbs: Bulbs)->Literal[0,1]:
+def getCoordValue(coord:Pair, lightbulbs: Bulbs) -> value:
     return lightbulbs[coord[0]][coord[1]]
 
 def actOnValue(value:Literal[0,1], action:mode, lighbulbs: Bulbs):
@@ -104,10 +105,10 @@ def parseLine(line:str, lightbulbs: Bulbs) -> Bulbs:
     # turn off 499,499 through 500,500
     pass
 
-def auxToBulbs(aux)->Bulbs:
+def auxToBulbs(aux) -> Bulbs:
     pass
 
-def countBulbs(ligthbulbs:Bulbs)->int:
+def countBulbs(ligthbulbs:Bulbs) -> int:
     pass
 
 def part1(lines: Generator[str, Any, None]):

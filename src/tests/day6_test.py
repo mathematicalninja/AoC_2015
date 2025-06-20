@@ -77,8 +77,8 @@ class Functions(TestCase):
 
         pair1 = parsePair("0,0")
         pair2 = parsePair("999,999")
-        self.assertEqual(pair1, (0,0))
-        self.assertEqual(pair2, (999,999))
+        self.assertEqual(pair1, [0,0])
+        self.assertEqual(pair2, [999,999])
 
 
     def test_between(self):
