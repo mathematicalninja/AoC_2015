@@ -86,14 +86,31 @@ class Functions(TestCase):
         self.assertFalse(check_between(6,0,2))
         pass
 
+    def test_inRange(self):
+
+        pass
+    def test_getCoordValue(self):
+        pass
+    def test_actOnValue(self):
+        pass
+    def test_actOnCoord(self):
+        pass
+    def test_parseLine(self):
+        pass
+    def test_auxToBulbs(self):
+        pass
+    def test_countBulbs(self):
+        pass
+
+
 class Parts(TestCase):
     def test_part1(self):
         for case in testCases_part1:
-            self.assertEqual(part1(inputLines_example(case[0])),case[1])
+            self.assertEqual(part1(inputMultiLines_example(case[0])),case[1])
             pass
     def test_part2(self):
         for case in testCases_part2:
-            self.assertEqual(part2(inputLines_example(case[0])),case[1])
+            self.assertEqual(part2(inputMultiLines_example(case[0])),case[1])
             pass
 class Answers(TestCase):
 
