@@ -20,7 +20,6 @@ def makeBulbs()->Bulbs:
         bulbs.append(line)
     return bulbs
 
-
 def splitThrough(line:str) -> Tuple[str,str,str]:
     """ Splits an input line into [mode, Pair1, Pair2]
 
@@ -50,7 +49,6 @@ def splitThrough(line:str) -> Tuple[str,str,str]:
 
     pass
 
-
 def parsePair(lineFragment:str)->Pair:
     """ turns string into number Pair: "n,m" -> (n,m)
 
@@ -72,7 +70,6 @@ def check_between(n:int,a:int,b:int)->bool:
         return True
     return False
 
-
 def inRange(currentPair:Pair,firstCorner:Pair,secondCorner:Pair)->bool:
     # note: backwards may be possible e.g. 9,9 -> 3,2
     xCheck = check_between(
@@ -89,7 +86,6 @@ def inRange(currentPair:Pair,firstCorner:Pair,secondCorner:Pair)->bool:
 
 def makeRange(pair1:Pair, pair2:Pair) -> Tuple[range, range]:
     return (range(pair1[0], pair2[0]), range(pair1[1], pair2[1]))
-
 
 def getCoordValue(coord:Pair, lightbulbs: Bulbs) -> value:
     return lightbulbs[coord[0]][coord[1]]
@@ -112,7 +108,6 @@ def actOnCoord(coord:Pair, action:mode, lightbulbs: Bulbs) -> Bulbs:
 
 def actoOnRectangle(corners:Tuple[Pair,Pair], action:mode, lightbulbs: Bulbs) -> Bulbs:
     pass
-
 
 def parseLine(line:str, lightbulbs: Bulbs) -> Bulbs:
     # turn on 0,0 through 999,999
