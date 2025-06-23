@@ -7,6 +7,8 @@ from inputFile import inputLines
 type Signals = dict[str, int]
 type Strength = int # Int16
 type B = Literal[0,1]
+type BitTuple = Tuple[B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B]
+"""Note: idx = 0 is 1s, idx = 4 is 16s, etc."""
 
 class Int16():
     def __init__(self,n:int) -> None:
@@ -22,7 +24,7 @@ class Int16():
             bs.join(str(b))
         return bs
 
-    def bits(self) -> Tuple[B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B]:
+    def bits(self) -> BitTuple:
         n = self.n
         bs:List[B] = []
         for i in range(16):
@@ -35,6 +37,15 @@ def mod2(n:int)->B:
     if n%2:
         return 1
     return 0
+
+def bitsToInt(bits: BitTuple)->int:
+    n=0
+    for i in range(16):
+        if bits[i]:
+            n += bits[i]*2**i
+    return n
+
+    pass
 
 def NOT(n:Int16):
     pass
