@@ -87,6 +87,10 @@ def inRange(currentPair:Pair,firstCorner:Pair,secondCorner:Pair)->bool:
     )
     return xCheck and yCheck
 
+def makeRange(pair1:Pair, pair2:Pair) -> Tuple[range, range]:
+    return (range(pair1[0], pair2[0]), range(pair1[1], pair2[1]))
+
+
 def getCoordValue(coord:Pair, lightbulbs: Bulbs) -> value:
     return lightbulbs[coord[0]][coord[1]]
 

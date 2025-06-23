@@ -12,7 +12,7 @@ from src.day6 import check_between
 from src.day6 import getCoordValue
 from src.day6 import inRange
 from src.day6 import Bulbs
-
+from src.day6 import makeRange
 
 testCases_part1:List[Tuple[List[str],int]]=[
     (["turn on 0,0 through 999,999"], 1000000),
@@ -111,6 +111,16 @@ class Functions(TestCase):
 
         pass
 
+    def test_makeRange(self):
+        # assert in range...[0,1] in [0,0],[1,1]
+        self.assertEqual((range(0,1),range(0,1)), makeRange([0,0],[1,1]))
+        # assert in range...[0,1] in [1,1],[0,0]
+        self.assertEqual((range(1,0),range(1,0)), makeRange([1,1],[0,0]))
+        # assert in range...[1,1] in [1,1],[1,1]
+        self.assertEqual((range(1,1),range(1,1)), makeRange([1,1],[1,1]))
+
+
+        pass
 
     def test_getCoordValue(self):
         for pair in [[0,0], [1,1]]:
