@@ -13,7 +13,7 @@ from src.day6 import getCoordValue
 from src.day6 import inRange
 from src.day6 import Bulbs
 from src.day6 import makeRange
-
+from src.day6 import actOnValue
 testCases_part1:List[Tuple[List[str],int]]=[
     (["turn on 0,0 through 999,999"], 1000000),
     (["toggle 0,0 through 999,0"], 1000),
@@ -133,7 +133,14 @@ class Functions(TestCase):
     pass
 
     def test_actOnValue(self):
-        pass
+        self.assertEqual(actOnValue(0, "off"), 0)
+        self.assertEqual(actOnValue(0, "on"), 1)
+        self.assertEqual(actOnValue(0, "toggle"), 1)
+
+        self.assertEqual(actOnValue(1, "off"), 0)
+        self.assertEqual(actOnValue(1, "on"), 1)
+        self.assertEqual(actOnValue(1, "toggle"), 0)
+
     def test_actOnCoord(self):
         pass
     def test_parseLine(self):

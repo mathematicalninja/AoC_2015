@@ -94,7 +94,14 @@ def makeRange(pair1:Pair, pair2:Pair) -> Tuple[range, range]:
 def getCoordValue(coord:Pair, lightbulbs: Bulbs) -> value:
     return lightbulbs[coord[0]][coord[1]]
 
-def actOnValue(value:Literal[0,1], action:mode, lighbulbs: Bulbs):
+def actOnValue(value:Literal[0,1], action:mode) -> Literal[0,1]:
+    match action:
+        case "off":
+            return 0
+        case "on":
+            return 1
+        case "toggle":
+            return 1-value
     pass
 
 def actOnCoord(coord:Pair, action:mode, lightbulbs: Bulbs):
