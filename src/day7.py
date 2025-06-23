@@ -10,6 +10,8 @@ type B = Literal[0,1]
 type BitTuple = Tuple[B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B]
 """Note: idx = 0 is 1s, idx = 4 is 16s, etc."""
 
+type Mode = Literal["NOT","LSHIFT","RSHIFT","OR","AND", "INPUT"]
+
 class Int16():
     def __init__(self,n:int) -> None:
         if(n<0):
