@@ -8,8 +8,8 @@ from utils.auxFile import makeAuxFile, clearAuxFile, readAuxFile, writeAuxFile
 
 type Pair = List[int]
 type Mode = Literal["on","off","toggle"]
-type Bulbs = List[List[Literal[0,1]]]
-type value = Literal[0,1]
+type Bulbs = List[List[int]]
+
 
 def makeBulbs()->Bulbs:
     bulbs = []
@@ -89,10 +89,10 @@ def makeRange(pair1:Pair, pair2:Pair) -> Tuple[range, range]:
     x2,y2 = pair2
     return (range(min(x1,x2), max(x1,x2)+1), range(min(y1,y2), max(y1,y2)+1))
 
-def getCoordValue(coord:Pair, lightbulbs: Bulbs) -> value:
+def getCoordValue(coord:Pair, lightbulbs: Bulbs) -> int:
     return lightbulbs[coord[0]][coord[1]]
 
-def actOnValue(value:Literal[0,1], action:Mode) -> Literal[0,1]:
+def actOnValue(value:int, action:Mode) -> int:
     match action:
         case "off":
             return 0
