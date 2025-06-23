@@ -116,11 +116,42 @@ class Functions(TestCase):
 
     def test_makeRange(self):
         # assert in range...[0,1] in [0,0],[1,1]
-        self.assertEqual((range(0,1),range(0,1)), makeRange([0,0],[1,1]))
+        with self.subTest("standard"):
+            coord = [0,1]
+            xRange, yRange = makeRange([0,0],[1,1])
+            match:bool = False
+            print("\n")
+            for x in xRange:
+                for y in yRange:
+                    print(x,y,coord,x == coord[0] and y == coord[1])
+                    if x == coord[0] and y == coord[1]:
+                        match = True
+            self.assertTrue(match)
         # assert in range...[0,1] in [1,1],[0,0]
-        self.assertEqual((range(1,0),range(1,0)), makeRange([1,1],[0,0]))
+        with self.subTest("reversed"):
+            coord = [0,1]
+            xRange, yRange = makeRange([1,1],[0,0])
+            match:bool = False
+            print("\n")
+            for x in xRange:
+                for y in yRange:
+                    print(x,y,coord,x == coord[0] and y == coord[1])
+                    if x == coord[0] and y == coord[1]:
+                        match = True
+            self.assertTrue(match)
         # assert in range...[1,1] in [1,1],[1,1]
-        self.assertEqual((range(1,1),range(1,1)), makeRange([1,1],[1,1]))
+        with self.subTest("single cell"):
+
+            coord = [1,1]
+            xRange, yRange = makeRange([1,1],[1,1])
+            match:bool = False
+            print("\n")
+            for x in xRange:
+                for y in yRange:
+                    print(x,y,coord,x == coord[0] and y == coord[1])
+                    if x == coord[0] and y == coord[1]:
+                        match = True
+            self.assertTrue(match)
 
 
         pass
