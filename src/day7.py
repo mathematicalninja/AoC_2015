@@ -49,23 +49,42 @@ def bitsToInt(bits: BitTuple)->int:
 
 
 def NOT(n:Int16):
-    out = []
+    out: List[B] = []
     bits = n.bits()
     for i in range(16):
-        out[i] = 1 - bits[i]
-    return
+        out[i] = 1 - bits[i] # type: ignore
+    return Int16(bitsToInt(out))
 
-def LSHIFT(n:Int16,count:int):
-    pass
+def LSHIFT(n:Int16, count:int) -> BitTuple:
+    excess:List[B] = [0 for i in range(count)]
+    bits = list(n.bits())[count:]
+    out:List[B] = bits + excess # Note: this allows for "over-shifting"
+    return Int16(bitsToInt(tuple(out[0:16]))) # type: ignore
 
 def RSHIFT(n:Int16,count:int):
-    pass
+    excess:List[B] = [0 for i in range(count)]
+    bits = list(n.bits())[:count]
+    out:List[B] = excess + bits # Note: this allows for "over-shifting"
+    return Int16(bitsToInt(tuple(out[0:16]))) # type: ignore
 
 def OR(a:Int16,b:Int16):
-    pass
+    aBits = a.bits()
+    bBits = b.bits()
+
+    out:List[B] = []
+    for i in range(16):
+        bit:B = min(aBits[i] + bBits[i], 1) # type: ignore
+        out.append(bit)
+    return Int16(bitsToInt(tuple(out[0:16]))) # type: ignore
 
 def AND(a:Int16,b:Int16):
-    pass
+    aBits = a.bits()
+    bBits = b.bits()
+
+    out:List[B] = []
+    for i in range(16):
+        out.append(aBits[i] * bBits[i]) # type: ignore
+    return Int16(bitsToInt(tuple(out[0:16]))) # type: ignore
 
 def getMode(line:str)->Mode:
     if line.find("NOT")!=-1:
