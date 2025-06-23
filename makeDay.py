@@ -139,6 +139,7 @@ def makeDayExact(dayNum:int,format:formatTypes):
     makeSrc(dayNum,format)
     makeInput(dayNum)
     makeTest(dayNum,format)
+    makeBlankAnswer(dayNum)
     print("done")
     pass
 
@@ -184,6 +185,17 @@ def replaceDAYNUMBER(dayNum:int, filePath):
             Uncommeted = NewLine.replace("# ","")
             print(Uncommeted, end='')
 
+
+def makeBlankAnswer(dayNum):
+    # make f"inputFiles\day{day}.txt" file.
+    filePath = join("answers", f"day{dayNum}.txt")
+    print(f"making answer file: day{dayNum}.txt")
+    try:
+        with open(filePath, "x") as file:
+            print(f"{filePath} created.")
+    except:
+        print(f"{filePath} already exists.")
+        return
 
 
 
