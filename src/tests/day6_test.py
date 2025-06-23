@@ -34,7 +34,7 @@ class Functions(TestCase):
             [0,1,0],
             [1,0,1],
             [0,1,0],
-            ]
+        ]
         self.strOn = "turn on 0,0 through 1,1"
         self.strOff = "turn off 0,0 through 1,1"
         self.strToggle = "toggle 0,0 through 1,1"
