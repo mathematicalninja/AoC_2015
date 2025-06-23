@@ -16,6 +16,16 @@ class Int16():
             self.n = 2^16-1
         self.n = n
         pass
+    def __str__(self) -> str:
+        bs = ""
+        for b in reversed(self.bits()):
+            bs.join(str(b))
+        return bs
+        pass
+    def bits(self) -> Tuple[B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B]:
+        pass
+    pass
+
 
 def part1(lines: Generator[str, Any, None]):
     for line in lines:
