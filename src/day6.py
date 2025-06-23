@@ -105,8 +105,9 @@ def actOnValue(value:Literal[0,1], action:Mode) -> Literal[0,1]:
 def actOnCoord(coord:Pair, action:Mode, lightbulbs: Bulbs) -> Bulbs:
     value = getCoordValue(coord, lightbulbs)
     newValue = actOnValue(value,action)
-    lightbulbs[coord[0]][coord[1]] = newValue
-    return lightbulbs
+    lb = lightbulbs
+    lb[coord[0]][coord[1]] = newValue
+    return lb
 
 def actOnRectangle(corners:Tuple[Pair,Pair], action:Mode, lightbulbs: Bulbs) -> Bulbs:
     lb = lightbulbs
@@ -121,10 +122,11 @@ def parseLine(line:str, lightbulbs: Bulbs) -> Bulbs:
     # turn on 0,0 through 999,999
     # toggle 0,0 through 999,0
     # turn off 499,499 through 500,500
-    lineTrio = splitThrough(line)[0]
-
-
-    pass
+    lineTrio = splitThrough(line)
+    action = lineTrio[0]
+    corner1 = parsePair(lineTrio[1])
+    corner2 = parsePair(lineTrio[2])
+    return actOnRectangle((corner1,corner2),action,lightbulbs)
 
 # def auxToBulbs(aux) -> Bulbs:
 #     pass
