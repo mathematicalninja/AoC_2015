@@ -15,6 +15,7 @@ from src.day6 import Bulbs
 from src.day6 import makeRange
 from src.day6 import actOnValue
 from src.day6 import actOnCoord
+from src.day6 import actOnRectangle
 
 testCases_part1:List[Tuple[List[str],int]]=[
     (["turn on 0,0 through 999,999"], 1000000),
@@ -209,10 +210,37 @@ class Functions(TestCase):
         self.assertEqual(getCoordValue(self.z_z,actOnCoord(self.z_z,"toggle",self.lightbulbs)),1)
         self.assertEqual(getCoordValue(self.t_t,actOnCoord(self.t_t,"toggle",self.lightbulbs)),1)
 
+    def test_actOnRectangle_on(self):
+        corners = (self.z_z,self.o_o)
+        lb = actOnRectangle(corners,"on",self.lightbulbs)
+        goal:Bulbs = [
+            [1,1,0],
+            [1,1,1],
+            [0,1,0],
+        ]
+        self.assertEqual(lb,goal)
 
-        pass
-    def test_actoOnRectangle(self):
-        pass
+    def test_actOnRectangle_off(self):
+        corners = (self.z_z,self.o_o)
+        lb = actOnRectangle(corners,"off",self.lightbulbs)
+        goal:Bulbs = [
+            [0,0,0],
+            [0,0,1],
+            [0,1,0],
+        ]
+        self.assertEqual(lb,goal)
+
+    def test_actOnRectangle_toggle(self):
+        corners = (self.z_z,self.o_o)
+
+        lb = actOnRectangle(corners,"toggle",self.lightbulbs)
+        goal:Bulbs = [
+            [1,0,0],
+            [0,1,1],
+            [0,1,0],
+        ]
+        self.assertEqual(lb,goal)
+
     def test_parseLine(self):
         pass
     def test_auxToBulbs(self):

@@ -108,8 +108,14 @@ def actOnCoord(coord:Pair, action:mode, lightbulbs: Bulbs) -> Bulbs:
     lightbulbs[coord[0]][coord[1]] = newValue
     return lightbulbs
 
-def actoOnRectangle(corners:Tuple[Pair,Pair], action:mode, lightbulbs: Bulbs) -> Bulbs:
-    pass
+def actOnRectangle(corners:Tuple[Pair,Pair], action:mode, lightbulbs: Bulbs) -> Bulbs:
+    lb = lightbulbs
+    xRange, yRange = makeRange(corners[0], corners[1])
+    for x in xRange:
+        for y in yRange:
+            coord:Pair = [x,y]
+            lb = actOnCoord(coord, action, lb)
+    return lb
 
 def parseLine(line:str, lightbulbs: Bulbs) -> Bulbs:
     # turn on 0,0 through 999,999
