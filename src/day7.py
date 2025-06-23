@@ -48,6 +48,12 @@ def bitsToInt(bits: BitTuple)->int:
     pass
 
 def NOT(n:Int16):
+    out = []
+    bits = n.bits()
+    for i in range(16):
+        out[i] = 1 - bits[i]
+    return
+
     pass
 
 def LSHIFT(n:Int16,count:int):
