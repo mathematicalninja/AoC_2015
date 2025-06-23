@@ -110,6 +110,7 @@ def actOnCoord(coord:Pair, action:mode, lightbulbs: Bulbs) -> Bulbs:
     lightbulbs[coord[0]][coord[1]] = newValue
     return lightbulbs
 
+def actoOnRectangle(corners:Tuple[Pair,Pair], action:mode, lightbulbs: Bulbs) -> Bulbs:
     pass
 
 
