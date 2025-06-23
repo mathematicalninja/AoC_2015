@@ -39,6 +39,12 @@ class Functions(TestCase):
         self.strOff = "turn off 0,0 through 1,1"
         self.strToggle = "toggle 0,0 through 1,1"
 
+        self.z_z = [0,0]
+        self.o_o = [1,1]
+        self.z_o = [0,1]
+        self.o_z = [1,0]
+        self.t_t = [2,2]
+
     def tearDown(self) -> None:
         pass
 
@@ -94,20 +100,15 @@ class Functions(TestCase):
         pass
 
     def test_inRange(self):
-        z_z = [0,0]
-        o_o = [1,1]
-        z_o = [0,1]
-        o_z = [1,0]
-        t_t = [2,2]
 
-        self.assertTrue(inRange(o_o,z_z,t_t))
-        self.assertTrue(inRange(o_z,o_z,o_z))
-        self.assertTrue(inRange(o_z,o_o,o_z))
-        self.assertTrue(inRange(o_o,t_t,z_z)) # Reverse direction
+        self.assertTrue(inRange(self.o_o,self.z_z,self.t_t))
+        self.assertTrue(inRange(self.o_z,self.o_z,self.o_z))
+        self.assertTrue(inRange(self.o_z,self.o_o,self.o_z))
+        self.assertTrue(inRange(self.o_o,self.t_t,self.z_z)) # Reverse direction
 
 
-        self.assertFalse(inRange(z_z,t_t,o_o))
-        self.assertFalse(inRange(t_t,z_z,z_z))
+        self.assertFalse(inRange(self.z_z,self.t_t,self.o_o))
+        self.assertFalse(inRange(self.t_t,self.z_z,self.z_z))
 
         pass
 
