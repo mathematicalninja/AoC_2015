@@ -4,7 +4,7 @@ from typing import Generator, Any, TypedDict
 from inputFile import inputLines
 
 
-type Signals = dict[str, type[int]]
+type Signals = dict[str, int]
 
 def part1(lines: Generator[str, Any, None]):
     for line in lines:
