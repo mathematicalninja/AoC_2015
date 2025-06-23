@@ -70,6 +70,18 @@ def OR(a:Int16,b:Int16):
 def AND(a:Int16,b:Int16):
     pass
 
+def getMode(line:str)->Mode:
+    if line.find("NOT")!=-1:
+        return "NOT"
+    if line.find("LSHIFT")!=-1:
+        return "LSHIFT"
+    if line.find("RSHIFT")!=-1:
+        return "RSHIFT"
+    if line.find("OR")!=-1:
+        return "OR"
+    if line.find("AND")!=-1:
+        return "AND"
+    return "INPUT"
 
 def getOutputIdentifier(line:str)->str:
     idx = line.find("-> ")+3
