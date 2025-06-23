@@ -47,7 +47,6 @@ def bitsToInt(bits: BitTuple)->int:
             n += bits[i]*2**i
     return n
 
-    pass
 
 def NOT(n:Int16):
     out = []
@@ -55,8 +54,6 @@ def NOT(n:Int16):
     for i in range(16):
         out[i] = 1 - bits[i]
     return
-
-    pass
 
 def LSHIFT(n:Int16,count:int):
     pass
@@ -86,6 +83,11 @@ def getMode(line:str)->Mode:
 def getOutputIdentifier(line:str)->str:
     idx = line.find("-> ")+3
     return line[idx:]
+
+def parseLine(line:str):
+    pass
+
+
 def part1(lines: Generator[str, Any, None]):
     for line in lines:
         pass
