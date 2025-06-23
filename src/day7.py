@@ -4,15 +4,7 @@ from typing import Generator, Any, TypedDict
 from inputFile import inputLines
 
 
-class Signals(TypedDict):
-    d: int
-    e: int
-    f: int
-    g: int
-    h: int
-    i: int
-    x: int
-    y: int
+type Signals = dict[str, type[int]]
 
 def part1(lines: Generator[str, Any, None]):
     for line in lines:
