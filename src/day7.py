@@ -1,5 +1,5 @@
 from icecream import ic
-from typing import Generator, Any, Tuple, Literal
+from typing import Generator, Any, Tuple, Literal, List
 
 from inputFile import inputLines
 
@@ -15,17 +15,26 @@ class Int16():
         if(n>2^16-1):
             self.n = 2^16-1
         self.n = n
-        pass
+
     def __str__(self) -> str:
         bs = ""
         for b in reversed(self.bits()):
             bs.join(str(b))
         return bs
-        pass
+
     def bits(self) -> Tuple[B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B]:
-        pass
+        n = self.n
+        bs:List[B] = []
+        for i in range(16):
+            bs.append(mod2(n))
+            n = n//2
+        return tuple(bs) # type: ignore
     pass
 
+def mod2(n:int)->B:
+    if n%2:
+        return 1
+    return 0
 
 def NOT(n:Int16):
     pass
