@@ -104,9 +104,12 @@ def actOnValue(value:Literal[0,1], action:mode) -> Literal[0,1]:
             return 1-value
     pass
 
-def actOnCoord(coord:Pair, action:mode, lightbulbs: Bulbs):
+def actOnCoord(coord:Pair, action:mode, lightbulbs: Bulbs) -> Bulbs:
     value = getCoordValue(coord, lightbulbs)
-    actOnValue(value,action, lightbulbs)
+    newValue = actOnValue(value,action)
+    lightbulbs[coord[0]][coord[1]] = newValue
+    return lightbulbs
+
     pass
 
 
