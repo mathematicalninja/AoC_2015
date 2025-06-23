@@ -27,6 +27,21 @@ class Int16():
     pass
 
 
+def NOT(n:Int16):
+    pass
+
+def LSHIFT(n:Int16,count:int):
+    pass
+
+def RSHIFT(n:Int16,count:int):
+    pass
+
+def OR(a:Int16,b:Int16):
+    pass
+
+def AND(a:Int16,b:Int16):
+    pass
+
 def part1(lines: Generator[str, Any, None]):
     for line in lines:
         pass
