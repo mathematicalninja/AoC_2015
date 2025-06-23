@@ -1,7 +1,18 @@
 from icecream import ic
-from typing import Generator, Any
+from typing import Generator, Any, TypedDict
 
 from inputFile import inputLines
+
+
+class Signals(TypedDict):
+    d: int
+    e: int
+    f: int
+    g: int
+    h: int
+    i: int
+    x: int
+    y: int
 
 def part1(lines: Generator[str, Any, None]):
     for line in lines:

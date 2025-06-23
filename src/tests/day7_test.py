@@ -4,13 +4,31 @@ from os.path import isfile, join
 
 from src.inputFile import inputMultiLines_example, inputLines
 
-from src.day7 import part1, part2
+from src.day7 import part1, part2, Signals
 
-testCases_part1:List[Tuple[List[str],int]]=[
-
+testCases_part1:List[Tuple[List[str], Signals]]=[
+([
+    "123 -> x",
+    "456 -> y",
+    "x AND y -> d",
+    "x OR y -> e",
+    "x LSHIFT 2 -> f",
+    "y RSHIFT 2 -> g",
+    "NOT x -> h",
+    "NOT y -> i"
+],{
+    "d": 72,
+    "e": 507,
+    "f": 492,
+    "g": 114,
+    "h": 65412,
+    "i": 65079,
+    "x": 123,
+    "y": 456
+})
 ]
 
-testCases_part2:List[Tuple[List[str],int]]=[
+testCases_part2:List[Tuple[List[str], Signals]]=[
 
 ]
 
