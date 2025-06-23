@@ -14,6 +14,8 @@ from src.day6 import inRange
 from src.day6 import Bulbs
 from src.day6 import makeRange
 from src.day6 import actOnValue
+from src.day6 import actOnCoord
+
 testCases_part1:List[Tuple[List[str],int]]=[
     (["turn on 0,0 through 999,999"], 1000000),
     (["toggle 0,0 through 999,0"], 1000),
@@ -142,7 +144,40 @@ class Functions(TestCase):
         self.assertEqual(actOnValue(1, "on"), 1)
         self.assertEqual(actOnValue(1, "toggle"), 0)
 
-    def test_actOnCoord(self):
+    def test_actOnCoord_off(self):
+        # self.lightbulbs: Bulbs = [
+        #     [0,1,0],
+        #     [1,0,1],
+        #     [0,1,0],
+        # ]
+        for coord in [self.o_o,self.o_z,self.z_o,self.z_z,self.t_t]:
+            with self.subTest(coord=coord):
+                self.assertEqual(getCoordValue(coord, actOnCoord(coord,"off",self.lightbulbs)),0)
+
+    def test_actOnCoord_on(self):
+        # self.lightbulbs: Bulbs = [
+        #     [0,1,0],
+        #     [1,0,1],
+        #     [0,1,0],
+        # ]
+        for coord in [self.o_o,self.o_z,self.z_o,self.z_z,self.t_t]:
+            with self.subTest(coord=coord):
+                print(actOnCoord(coord,"off",self.lightbulbs))
+                self.assertEqual(getCoordValue(coord, actOnCoord(coord,"on",self.lightbulbs)),1)
+
+    def test_actOnCoord_toggle(self):
+        # self.lightbulbs: Bulbs = [
+        #     [0,1,0],
+        #     [1,0,1],
+        #     [0,1,0],
+        # ]
+
+        self.assertEqual(getCoordValue(self.o_o,actOnCoord(self.o_o,"toggle",self.lightbulbs)),1)
+        self.assertEqual(getCoordValue(self.o_z,actOnCoord(self.o_z,"toggle",self.lightbulbs)),0)
+        self.assertEqual(getCoordValue(self.z_o,actOnCoord(self.z_o,"toggle",self.lightbulbs)),0)
+        self.assertEqual(getCoordValue(self.z_z,actOnCoord(self.z_z,"toggle",self.lightbulbs)),1)
+        self.assertEqual(getCoordValue(self.t_t,actOnCoord(self.t_t,"toggle",self.lightbulbs)),1)
+
 
         pass
     def test_actoOnRectangle(self):
