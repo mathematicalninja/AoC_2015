@@ -4,7 +4,7 @@ from os.path import isfile, join
 
 from src.inputFile import inputMultiLines_example, inputLines
 
-from src.day7 import part1, part2, Signals
+from src.day7 import part1, part2, Signals,getOutputIdentifier
 
 testCases_part1:List[Tuple[List[str], Signals]]=[
 ([
@@ -39,6 +39,12 @@ class Functions(TestCase):
 
     def tearDown(self) -> None:
         pass
+
+
+    def test_getOuputIdentifier(self):
+        self.assertEqual(getOutputIdentifier("123 -> x"),"x")
+        self.assertEqual(getOutputIdentifier("p LSHIFT 2 -> q"),"q")
+
 
 class Parts(TestCase):
     def test_part1(self):

@@ -70,6 +70,10 @@ def OR(a:Int16,b:Int16):
 def AND(a:Int16,b:Int16):
     pass
 
+
+def getOutputIdentifier(line:str)->str:
+    idx = line.find("-> ")+3
+    return line[idx:]
 def part1(lines: Generator[str, Any, None]):
     for line in lines:
         pass
