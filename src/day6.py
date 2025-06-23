@@ -9,6 +9,7 @@ from utils.auxFile import makeAuxFile, clearAuxFile, readAuxFile, writeAuxFile
 type Pair = List[int]
 type Mode = Literal["on","off","toggle"]
 type Bulbs = List[List[int]]
+type Part = Literal[1,2]
 
 
 def makeBulbs()->Bulbs:
@@ -92,33 +93,45 @@ def makeRange(pair1:Pair, pair2:Pair) -> Tuple[range, range]:
 def getCoordValue(coord:Pair, lightbulbs: Bulbs) -> int:
     return lightbulbs[coord[0]][coord[1]]
 
-def actOnValue(value:int, action:Mode) -> int:
-    match action:
-        case "off":
-            return 0
-        case "on":
-            return 1
-        case "toggle":
-            return 1-value
+
+
+def actOnValue(value:int, action:Mode,part:Part) -> int:
+    match part:
+        case 1:
+            match action:
+                case "off":
+                    return 0
+                case "on":
+                    return 1
+                case "toggle":
+                    return 1-value
+        case 2:
+            match action:
+                case "off":
+                    return max(value-1,0)
+                case "on":
+                    return value+1
+                case "toggle":
+                    return value+2
     pass
 
-def actOnCoord(coord:Pair, action:Mode, lightbulbs: Bulbs) -> Bulbs:
+def actOnCoord(coord:Pair, action:Mode, lightbulbs: Bulbs, part:Part) -> Bulbs:
     value = getCoordValue(coord, lightbulbs)
-    newValue = actOnValue(value,action)
+    newValue = actOnValue(value,action,part)
     lb = lightbulbs
     lb[coord[0]][coord[1]] = newValue
     return lb
 
-def actOnRectangle(corners:Tuple[Pair,Pair], action:Mode, lightbulbs: Bulbs) -> Bulbs:
+def actOnRectangle(corners:Tuple[Pair,Pair], action:Mode, lightbulbs: Bulbs, part: Part) -> Bulbs:
     lb = lightbulbs
     xRange, yRange = makeRange(corners[0], corners[1])
     for x in xRange:
         for y in yRange:
             coord:Pair = [x,y]
-            lb = actOnCoord(coord, action, lb)
+            lb = actOnCoord(coord, action, lb, part)
     return lb
 
-def parseLine(line:str, lightbulbs: Bulbs) -> Bulbs:
+def parseLine(line:str, lightbulbs: Bulbs, part:Part) -> Bulbs:
     # turn on 0,0 through 999,999
     # toggle 0,0 through 999,0
     # turn off 499,499 through 500,500
@@ -126,7 +139,7 @@ def parseLine(line:str, lightbulbs: Bulbs) -> Bulbs:
     action = lineTrio[0]
     corner1 = parsePair(lineTrio[1])
     corner2 = parsePair(lineTrio[2])
-    return actOnRectangle((corner1,corner2),action,lightbulbs)
+    return actOnRectangle((corner1,corner2),action,lightbulbs, part)
 
 # def auxToBulbs(aux) -> Bulbs:
 #     pass
@@ -154,14 +167,16 @@ def part1(lines: Generator[str, Any, None]):
     #     lightbulbs = auxToBulbs(aux)
     lightbulbs= makeBulbs()
     for line in lines:
-        lightbulbs = parseLine(line,lightbulbs)
+        lightbulbs = parseLine(line,lightbulbs,part=1)
         pass
     return countBulbs(lightbulbs)
 
 def part2(lines: Generator[str, Any, None]):
+    lightbulbs= makeBulbs()
     for line in lines:
+        lightbulbs = parseLine(line,lightbulbs,part=2)
         pass
-    pass
+    return countBulbs(lightbulbs)
 
 
 if __name__ == "__main__":

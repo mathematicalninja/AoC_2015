@@ -169,13 +169,13 @@ class Functions(TestCase):
     pass
 
     def test_actOnValue(self):
-        self.assertEqual(actOnValue(0, "off"), 0)
-        self.assertEqual(actOnValue(0, "on"), 1)
-        self.assertEqual(actOnValue(0, "toggle"), 1)
+        self.assertEqual(actOnValue(0, "off",part=1), 0)
+        self.assertEqual(actOnValue(0, "on",part=1), 1)
+        self.assertEqual(actOnValue(0, "toggle",part=1), 1)
 
-        self.assertEqual(actOnValue(1, "off"), 0)
-        self.assertEqual(actOnValue(1, "on"), 1)
-        self.assertEqual(actOnValue(1, "toggle"), 0)
+        self.assertEqual(actOnValue(1, "off",part=1), 0)
+        self.assertEqual(actOnValue(1, "on",part=1), 1)
+        self.assertEqual(actOnValue(1, "toggle",part=1), 0)
 
     def test_actOnCoord_off(self):
         # self.lightbulbs: Bulbs = [
@@ -185,7 +185,7 @@ class Functions(TestCase):
         # ]
         for coord in [self.o_o,self.o_z,self.z_o,self.z_z,self.t_t]:
             with self.subTest(coord=coord):
-                self.assertEqual(getCoordValue(coord, actOnCoord(coord,"off",self.lightbulbs)),0)
+                self.assertEqual(getCoordValue(coord, actOnCoord(coord,"off",self.lightbulbs,part=1)),0)
 
     def test_actOnCoord_on(self):
         # self.lightbulbs: Bulbs = [
@@ -195,8 +195,8 @@ class Functions(TestCase):
         # ]
         for coord in [self.o_o,self.o_z,self.z_o,self.z_z,self.t_t]:
             with self.subTest(coord=coord):
-                print(actOnCoord(coord,"off",self.lightbulbs))
-                self.assertEqual(getCoordValue(coord, actOnCoord(coord,"on",self.lightbulbs)),1)
+                print(actOnCoord(coord,"off",self.lightbulbs,part=1))
+                self.assertEqual(getCoordValue(coord, actOnCoord(coord,"on",self.lightbulbs,part=1)),1)
 
     def test_actOnCoord_toggle(self):
         # self.lightbulbs: Bulbs = [
@@ -205,15 +205,15 @@ class Functions(TestCase):
         #     [0,1,0],
         # ]
 
-        self.assertEqual(getCoordValue(self.o_o,actOnCoord(self.o_o,"toggle",self.lightbulbs)),1)
-        self.assertEqual(getCoordValue(self.o_z,actOnCoord(self.o_z,"toggle",self.lightbulbs)),0)
-        self.assertEqual(getCoordValue(self.z_o,actOnCoord(self.z_o,"toggle",self.lightbulbs)),0)
-        self.assertEqual(getCoordValue(self.z_z,actOnCoord(self.z_z,"toggle",self.lightbulbs)),1)
-        self.assertEqual(getCoordValue(self.t_t,actOnCoord(self.t_t,"toggle",self.lightbulbs)),1)
+        self.assertEqual(getCoordValue(self.o_o,actOnCoord(self.o_o,"toggle",self.lightbulbs,part=1)),1)
+        self.assertEqual(getCoordValue(self.o_z,actOnCoord(self.o_z,"toggle",self.lightbulbs,part=1)),0)
+        self.assertEqual(getCoordValue(self.z_o,actOnCoord(self.z_o,"toggle",self.lightbulbs,part=1)),0)
+        self.assertEqual(getCoordValue(self.z_z,actOnCoord(self.z_z,"toggle",self.lightbulbs,part=1)),1)
+        self.assertEqual(getCoordValue(self.t_t,actOnCoord(self.t_t,"toggle",self.lightbulbs,part=1)),1)
 
     def test_actOnRectangle_on(self):
         corners = (self.z_z,self.o_o)
-        lb = actOnRectangle(corners,"on",self.lightbulbs)
+        lb = actOnRectangle(corners,"on",self.lightbulbs,part=1)
         goal:Bulbs = [
             [1,1,0],
             [1,1,1],
@@ -223,7 +223,7 @@ class Functions(TestCase):
 
     def test_actOnRectangle_off(self):
         corners = (self.z_z,self.o_o)
-        lb = actOnRectangle(corners,"off",self.lightbulbs)
+        lb = actOnRectangle(corners,"off",self.lightbulbs,part=1)
         goal:Bulbs = [
             [0,0,0],
             [0,0,1],
@@ -234,7 +234,7 @@ class Functions(TestCase):
     def test_actOnRectangle_toggle(self):
         corners = (self.z_z,self.o_o)
 
-        lb = actOnRectangle(corners,"toggle",self.lightbulbs)
+        lb = actOnRectangle(corners,"toggle",self.lightbulbs,part=1)
         goal:Bulbs = [
             [1,0,0],
             [0,1,1],
@@ -260,9 +260,9 @@ class Parts(TestCase):
         for case in testCases_part2:
             self.assertEqual(part2(inputMultiLines_example(case[0])),case[1])
             pass
+
+
 class Answers(TestCase):
-
-
     def test_answer1(self):
         answerPath = join("answers", "day6.txt")
         inputPath = join("inputFiles", "day6.txt")
