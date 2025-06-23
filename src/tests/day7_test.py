@@ -4,7 +4,7 @@ from os.path import isfile, join
 
 from src.inputFile import inputMultiLines_example, inputLines
 
-from src.day7 import part1, part2, Signals,getOutputIdentifier
+from src.day7 import part1, part2, Signals,getOutputIdentifier, getMode
 
 testCases_part1:List[Tuple[List[str], Signals]]=[
 ([
@@ -44,6 +44,14 @@ class Functions(TestCase):
     def test_getOuputIdentifier(self):
         self.assertEqual(getOutputIdentifier("123 -> x"),"x")
         self.assertEqual(getOutputIdentifier("p LSHIFT 2 -> q"),"q")
+
+    def test_getMode(self):
+        self.assertEqual(getMode("456 -> y"),"INPUT")
+        self.assertEqual(getMode("x AND y -> d"),"AND")
+        self.assertEqual(getMode("x OR y -> e"),"OR")
+        self.assertEqual(getMode("x LSHIFT 2 -> f"),"LSHIFT")
+        self.assertEqual(getMode("y RSHIFT 2 -> g"),"RSHIFT")
+        self.assertEqual(getMode("NOT x -> h"),"NOT")
 
 
 class Parts(TestCase):
