@@ -6,11 +6,11 @@ from src.inputFile import inputMultiLines_example, inputLines
 
 # from src.dayDAYNUMBER import part1, part2
 
-testCases_part1:List[Tuple[str,int]]=[
+testCases_part1:List[Tuple[List[str],int]]=[
 
 ]
 
-testCases_part2:List[Tuple[str,int]]=[
+testCases_part2:List[Tuple[List[str],int]]=[
 
 ]
 
