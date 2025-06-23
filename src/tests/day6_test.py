@@ -81,7 +81,6 @@ class Functions(TestCase):
         self.assertEqual(pair1, [0,0])
         self.assertEqual(pair2, [999,999])
 
-
     def test_between(self):
         self.assertTrue(check_between(1,1,1))
         self.assertTrue(check_between(1,0,2))
