@@ -134,7 +134,6 @@ def countBulbs(ligthbulbs:Bulbs) -> int:
         for y in yRange:
             count+=ligthbulbs[x][y]
     return count
-    pass
 
 def part1(lines: Generator[str, Any, None]):
     # fileName = "day6_part1_Aux.txt"
