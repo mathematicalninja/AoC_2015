@@ -1,10 +1,21 @@
 from icecream import ic
-from typing import Generator, Any, TypedDict
+from typing import Generator, Any, Tuple, Literal
 
 from inputFile import inputLines
 
 
 type Signals = dict[str, int]
+type Strength = int # Int16
+type B = Literal[0,1]
+
+class Int16():
+    def __init__(self,n:int) -> None:
+        if(n<0):
+            self.n = 0
+        if(n>2^16-1):
+            self.n = 2^16-1
+        self.n = n
+        pass
 
 def part1(lines: Generator[str, Any, None]):
     for line in lines:
