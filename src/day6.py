@@ -7,7 +7,7 @@ from os.path  import join
 from utils.auxFile import makeAuxFile, clearAuxFile, readAuxFile, writeAuxFile
 
 type Pair = List[int]
-type mode = Literal["on","off","toggle"]
+type Mode = Literal["on","off","toggle"]
 type Bulbs = List[List[Literal[0,1]]]
 type value = Literal[0,1]
 
@@ -20,7 +20,7 @@ def makeBulbs()->Bulbs:
         bulbs.append(line)
     return bulbs
 
-def splitThrough(line:str) -> Tuple[str,str,str]:
+def splitThrough(line:str) -> Tuple[Mode,str,str]:
     """ Splits an input line into [mode, Pair1, Pair2]
 
     e.g.
@@ -39,7 +39,7 @@ def splitThrough(line:str) -> Tuple[str,str,str]:
         space2 = line.find(" ",space1+1)
 
         newLine = line[space2+1:]
-        mode = line[space1+1:space2]
+        mode:Mode = line[space1+1:space2] # type: ignore
 
     throughIdx = newLine.find("through")
 
@@ -92,7 +92,7 @@ def makeRange(pair1:Pair, pair2:Pair) -> Tuple[range, range]:
 def getCoordValue(coord:Pair, lightbulbs: Bulbs) -> value:
     return lightbulbs[coord[0]][coord[1]]
 
-def actOnValue(value:Literal[0,1], action:mode) -> Literal[0,1]:
+def actOnValue(value:Literal[0,1], action:Mode) -> Literal[0,1]:
     match action:
         case "off":
             return 0
@@ -102,13 +102,13 @@ def actOnValue(value:Literal[0,1], action:mode) -> Literal[0,1]:
             return 1-value
     pass
 
-def actOnCoord(coord:Pair, action:mode, lightbulbs: Bulbs) -> Bulbs:
+def actOnCoord(coord:Pair, action:Mode, lightbulbs: Bulbs) -> Bulbs:
     value = getCoordValue(coord, lightbulbs)
     newValue = actOnValue(value,action)
     lightbulbs[coord[0]][coord[1]] = newValue
     return lightbulbs
 
-def actOnRectangle(corners:Tuple[Pair,Pair], action:mode, lightbulbs: Bulbs) -> Bulbs:
+def actOnRectangle(corners:Tuple[Pair,Pair], action:Mode, lightbulbs: Bulbs) -> Bulbs:
     lb = lightbulbs
     xRange, yRange = makeRange(corners[0], corners[1])
     for x in xRange:
@@ -121,6 +121,9 @@ def parseLine(line:str, lightbulbs: Bulbs) -> Bulbs:
     # turn on 0,0 through 999,999
     # toggle 0,0 through 999,0
     # turn off 499,499 through 500,500
+    lineTrio = splitThrough(line)[0]
+
+
     pass
 
 # def auxToBulbs(aux) -> Bulbs:
@@ -152,7 +155,6 @@ def part1(lines: Generator[str, Any, None]):
         lightbulbs = parseLine(line,lightbulbs)
         pass
     return countBulbs(lightbulbs)
-    pass
 
 def part2(lines: Generator[str, Any, None]):
     for line in lines:
