@@ -2,9 +2,6 @@ from icecream import ic
 from typing import Generator, Any, Literal, List, Tuple
 
 from inputFile import inputLines
-from os.path  import join
-
-from utils.auxFile import makeAuxFile, clearAuxFile, readAuxFile, writeAuxFile
 
 type Pair = List[int]
 type Mode = Literal["on","off","toggle"]
@@ -141,9 +138,6 @@ def parseLine(line:str, lightbulbs: Bulbs, part:Part) -> Bulbs:
     corner2 = parsePair(lineTrio[2])
     return actOnRectangle((corner1,corner2),action,lightbulbs, part)
 
-# def auxToBulbs(aux) -> Bulbs:
-#     pass
-
 def countBulbs(ligthbulbs:Bulbs) -> int:
     xRange = range(len(ligthbulbs))
     yRange = range(len(ligthbulbs[0]))
@@ -153,18 +147,8 @@ def countBulbs(ligthbulbs:Bulbs) -> int:
             count+=ligthbulbs[x][y]
     return count
 
+
 def part1(lines: Generator[str, Any, None]):
-    # fileName = "day6_part1_Aux.txt"
-    # try:
-    #     makeAuxFile(fileName)
-    #     for i in range(1000):
-    #         for k in range(1000):
-    #         writeAuxFile(fileName, )
-    # except:
-    #     clearAuxFile(fileName)
-    # finally:
-    #     aux = readAuxFile(fileName)
-    #     lightbulbs = auxToBulbs(aux)
     lightbulbs= makeBulbs()
     for line in lines:
         lightbulbs = parseLine(line,lightbulbs,part=1)
