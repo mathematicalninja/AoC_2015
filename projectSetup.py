@@ -17,4 +17,4 @@ def makeInput(dayNum:int):
 if __name__ == "__main__":
     DayList = range(1,26)
     for day in DayList:
-        makeInput(str(day))
+        makeInput(day)
