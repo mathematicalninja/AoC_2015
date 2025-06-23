@@ -31,9 +31,10 @@ testCases_part2:List[Tuple[List[str],int]]=[
 class Functions(TestCase):
     def setUp(self) -> None:
         self.lightbulbs: Bulbs = [
-            [0,1],
-            [1,0]
-        ]
+            [0,1,0],
+            [1,0,1],
+            [0,1,0],
+            ]
         self.strOn = "turn on 0,0 through 1,1"
         self.strOff = "turn off 0,0 through 1,1"
         self.strToggle = "toggle 0,0 through 1,1"
@@ -142,6 +143,9 @@ class Functions(TestCase):
         self.assertEqual(actOnValue(1, "toggle"), 0)
 
     def test_actOnCoord(self):
+
+        pass
+    def test_actoOnRectangle(self):
         pass
     def test_parseLine(self):
         pass
