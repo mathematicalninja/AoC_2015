@@ -40,7 +40,7 @@ def mod2(n:int)->B:
         return 1
     return 0
 
-def bitsToInt(bits: BitTuple)->int:
+def bitsToInt(bits: List[B])->int:
     n=0
     for i in range(16):
         if bits[i]:
@@ -103,9 +103,56 @@ def getOutputIdentifier(line:str)->str:
     idx = line.find("-> ")+3
     return line[idx:]
 
-def parseLine(line:str):
+def parseLine(line:str, SignalWires:dict):
+    sg  = SignalWires
+    outId = getOutputIdentifier(line)
+    mode = getMode(line)
+
+    match mode:
+        case "INPUT":
+            A = Int16(getInputINPUT(line))
+            sg[outId] = A
+            pass
+
+        case "NOT":
+            B = getInputNot(line)
+            value = NOT(B)
+            sg[outId] = value
+
+        case "AND":
+            A, B = getInputAND(line)
+            value = AND(A,B)
+            sg[outId] = value
+
+        case "OR":
+            A, B = getInputOR(line)
+            value = OR(A,B)
+            sg[outId] = value
+
+        case "LSHIFT":
+            A, B = getInputLSHIFT(line)
+            value = LSHIFT(A,B)
+            sg[outId] = value
+
+        case "RSHIFT":
+            A, B = getInputRSHIFT(line)
+            value = RSHIFT(A,B)
+            sg[outId] = value
+            pass
     pass
 
+def getInputINPUT(line:str)->int:
+    pass
+def getInputNot(line:str) -> Int16:
+    pass
+def getInputAND(line:str) -> Tuple[Int16, Int16]:
+    pass
+def getInputOR(line:str) -> Tuple[Int16, Int16]:
+    pass
+def getInputLSHIFT(line:str) -> Tuple[Int16, int]:
+    pass
+def getInputRSHIFT(line:str) -> Tuple[Int16, int]:
+    pass
 
 def part1(lines: Generator[str, Any, None]):
     for line in lines:
