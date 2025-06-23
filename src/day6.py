@@ -123,10 +123,17 @@ def parseLine(line:str, lightbulbs: Bulbs) -> Bulbs:
     # turn off 499,499 through 500,500
     pass
 
-def auxToBulbs(aux) -> Bulbs:
-    pass
+# def auxToBulbs(aux) -> Bulbs:
+#     pass
 
 def countBulbs(ligthbulbs:Bulbs) -> int:
+    xRange = range(len(ligthbulbs))
+    yRange = range(len(ligthbulbs[0]))
+    count = 0
+    for x in xRange:
+        for y in yRange:
+            count+=ligthbulbs[x][y]
+    return count
     pass
 
 def part1(lines: Generator[str, Any, None]):

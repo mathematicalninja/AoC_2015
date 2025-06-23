@@ -16,6 +16,7 @@ from src.day6 import makeRange
 from src.day6 import actOnValue
 from src.day6 import actOnCoord
 from src.day6 import actOnRectangle
+from src.day6 import countBulbs
 
 testCases_part1:List[Tuple[List[str],int]]=[
     (["turn on 0,0 through 999,999"], 1000000),
@@ -246,6 +247,7 @@ class Functions(TestCase):
     def test_auxToBulbs(self):
         pass
     def test_countBulbs(self):
+        self.assertEqual(4,countBulbs(self.lightbulbs))
         pass
 
 
