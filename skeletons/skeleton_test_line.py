@@ -14,7 +14,15 @@ testCases_part2:List[Tuple[str,int]]=[
 
 ]
 
-class Tests(TestCase):
+
+class Functions(TestCase):
+    def setUp(self) -> None:
+        pass
+
+    def tearDown(self) -> None:
+        pass
+
+class Parts(TestCase):
     def test_part1(self):
         for case in testCases_part1:
             # self.assertEqual(part1(inputLines_example(case[0])),case[1])
@@ -25,6 +33,7 @@ class Tests(TestCase):
             pass
 
 
+class Answers(TestCase):
     def test_answer1(self):
         answerPath = join("answers", "dayDAYNUMBER.txt")
         inputPath = join("inputFiles", "dayDAYNUMBER.txt")
