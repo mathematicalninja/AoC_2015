@@ -10,7 +10,7 @@ import shutil
 from selectFromDict import OptionDic, PrintFormat, selectFromDict
 from projectSetup import makeInput
 
-type formatTypes = Literal['char', 'line', 'whole']
+type formatTypes = Literal['char', 'line', 'whole', 'multiline']
 
 
 def dayFormatter()->PrintFormat:
@@ -87,7 +87,7 @@ def chooseDay(num:int)->int:
     return typeCast
 
 def chooseFormat()->formatTypes:
-    formatList:List[formatTypes] = ['char', 'line', 'whole']
+    formatList:List[formatTypes] = ['char', 'line', 'whole', 'multiline']
     formats:List[OptionDic] = [
         {
             "externalName": f"Day {str(format)}",
