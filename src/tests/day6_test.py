@@ -122,10 +122,10 @@ class Functions(TestCase):
             coord = [0,1]
             xRange, yRange = makeRange([0,0],[1,1])
             match:bool = False
-            print("\n")
+            # print("\n")
             for x in xRange:
                 for y in yRange:
-                    print(x,y,coord,x == coord[0] and y == coord[1])
+                    # print(x,y,coord,x == coord[0] and y == coord[1])
                     if x == coord[0] and y == coord[1]:
                         match = True
             self.assertTrue(match)
@@ -134,10 +134,10 @@ class Functions(TestCase):
             coord = [0,1]
             xRange, yRange = makeRange([1,1],[0,0])
             match:bool = False
-            print("\n")
+            # print("\n")
             for x in xRange:
                 for y in yRange:
-                    print(x,y,coord,x == coord[0] and y == coord[1])
+                    # print(x,y,coord,x == coord[0] and y == coord[1])
                     if x == coord[0] and y == coord[1]:
                         match = True
             self.assertTrue(match)
@@ -147,10 +147,10 @@ class Functions(TestCase):
             coord = [1,1]
             xRange, yRange = makeRange([1,1],[1,1])
             match:bool = False
-            print("\n")
+            # print("\n")
             for x in xRange:
                 for y in yRange:
-                    print(x,y,coord,x == coord[0] and y == coord[1])
+                    # print(x,y,coord,x == coord[0] and y == coord[1])
                     if x == coord[0] and y == coord[1]:
                         match = True
             self.assertTrue(match)
@@ -195,7 +195,7 @@ class Functions(TestCase):
         # ]
         for coord in [self.o_o,self.o_z,self.z_o,self.z_z,self.t_t]:
             with self.subTest(coord=coord):
-                print(actOnCoord(coord,"off",self.lightbulbs,part=1))
+                # print(actOnCoord(coord,"off",self.lightbulbs,part=1))
                 self.assertEqual(getCoordValue(coord, actOnCoord(coord,"on",self.lightbulbs,part=1)),1)
 
     def test_actOnCoord_toggle(self):
