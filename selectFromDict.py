@@ -1,37 +1,35 @@
-
-
 from typing import List, TypedDict
 
 
 class OptionDic(TypedDict):
-    externalStub: str # The Stub to be written before the ")", usually an int.
-    externalName: str # The Full name, as displayed to the user
-    internalCode: str | int # The **internal** code that will be returned
+    externalStub: str  # The Stub to be written before the ")", usually an int.
+    externalName: str  # The Full name, as displayed to the user
+    internalCode: str | int  # The **internal** code that will be returned
 
 
-class PrintFormat():
-    className:str
+class PrintFormat:
+    className: str
     # template = t"{name} Name" # 3.14 not out yet...
 
-    def initialMessage(self)->str:
+    def initialMessage(self) -> str:
         return ""
 
-    def printLine(self, option:OptionDic)->str: # the line to be printed in the cli
+    def printLine(self, option: OptionDic) -> str:  # the line to be printed in the cli
         return f"{option['internalCode']}"
 
-    def inputLineMessage(self)->str:
+    def inputLineMessage(self) -> str:
         return ""
 
-    def incorrectInputMessage(self,Raw:str)->str:
+    def incorrectInputMessage(self, Raw: str) -> str:
         return f"{Raw} not recognised."
 
-    def correctInputMessage(self, option:OptionDic)-> str:
+    def correctInputMessage(self, option: OptionDic) -> str:
         return f"{option['externalName']} selected."
 
     pass
 
 
-def selectFromDict(options:List[OptionDic], formatting: PrintFormat)->OptionDic:
+def selectFromDict(options: List[OptionDic], formatting: PrintFormat) -> OptionDic:
     print(formatting.initialMessage())
 
     for opt in options:

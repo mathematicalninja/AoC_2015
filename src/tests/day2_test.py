@@ -6,35 +6,31 @@ from src.inputFile import inputLines_example, inputLines
 
 from src.day2 import part1, part2
 
-testCases_part1:List[Tuple[str,int]]=[
-    ("2x3x4", 58),
-    ("1x1x10", 43)
-]
+testCases_part1: List[Tuple[str, int]] = [("2x3x4", 58), ("1x1x10", 43)]
 
-testCases_part2:List[Tuple[str,int]]=[
-    ("2x3x4",34),
-    ("1x1x10",14)
-]
+testCases_part2: List[Tuple[str, int]] = [("2x3x4", 34), ("1x1x10", 14)]
+
 
 class Tests(TestCase):
     def test_part1(self):
         for case in testCases_part1:
-            self.assertEqual(part1(inputLines_example(case[0])),case[1])
+            self.assertEqual(part1(inputLines_example(case[0])), case[1])
             pass
+
     def test_part2(self):
         for case in testCases_part2:
-            self.assertEqual(part2(inputLines_example(case[0])),case[1])
+            self.assertEqual(part2(inputLines_example(case[0])), case[1])
             pass
 
     def test_answer1(self):
         answerPath = join("answers", "day2.txt")
         inputPath = join("inputFiles", "day2.txt")
         if isfile(answerPath) and isfile(inputPath):
-            with open (answerPath) as A:
+            with open(answerPath) as A:
                 answer1, answer2 = A.readlines()
             fullinput = inputLines(2)
 
-            self.assertEqual(part1(fullinput),int(answer1.replace("\\n","")))
+            self.assertEqual(part1(fullinput), int(answer1.replace("\\n", "")))
 
         else:
             pass
@@ -43,13 +39,12 @@ class Tests(TestCase):
         answerPath = join("answers", "day2.txt")
         inputPath = join("inputFiles", "day2.txt")
         if isfile(answerPath) and isfile(inputPath):
-            with open (answerPath) as A:
+            with open(answerPath) as A:
                 answer1, answer2 = A.readlines()
             fullinput = inputLines(2)
 
-            self.assertEqual(part2(fullinput),int(answer2.replace("\\n","")))
-
-
+            self.assertEqual(part2(fullinput), int(answer2.replace("\\n", "")))
 
         else:
             pass
+
