@@ -3,7 +3,7 @@ from typing import Generator, Any
 
 from inputFile import inputLines
 
-# https://adventofcode.com/2015/day/DAYNUMBER
+# # https://adventofcode.com/2015/day/DAYNUMBER
 
 
 def part1(lines: Generator[str, Any, None]):
@@ -24,4 +24,3 @@ if __name__ == "__main__":
     # lines2 = inputLines(DAYNUMBER)
     # print("part 2: ", part2(lines2))
     pass
-
