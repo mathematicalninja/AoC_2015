@@ -193,7 +193,7 @@ def replaceDAYNUMBER(dayNum: int, filePath):
 
 
 def makeBlankAnswer(dayNum):
-    # make f"inputFiles\day{day}.txt" file.
+    # make f"answers\day{day}.txt" file.
     filePath = join("answers", f"day{dayNum}.txt")
     print(f"making answer file: day{dayNum}.txt")
     try:
