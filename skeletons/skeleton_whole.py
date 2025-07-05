@@ -3,6 +3,8 @@ from typing import Generator, Any
 
 from inputFile import inputWhole
 
+# https://adventofcode.com/2015/day/DAYNUMBER
+
 
 def part1(file: str):
     pass
@@ -17,4 +19,3 @@ if __name__ == "__main__":
     # print("part 1: ", part1(next(File)))
     # print("part 2: ", part2(next(File)))
     pass
-

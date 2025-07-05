@@ -3,10 +3,14 @@ from typing import Generator, Any
 
 from inputFile import inputChars
 
+# https://adventofcode.com/2015/day/DAYNUMBER
+
+
 def part1(chars: Generator[str, Any, None]):
     for char in chars:
         pass
     pass
+
 
 def part2(chars: Generator[str, Any, None]):
     for char in chars:
@@ -20,3 +24,4 @@ if __name__ == "__main__":
     # chars2 = inputChars(DAYNUMBER)
     # print("part 2: ", part2(chars))
     pass
+
