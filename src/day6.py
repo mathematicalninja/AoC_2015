@@ -3,6 +3,8 @@ from typing import Generator, Any, Literal, List, Tuple
 
 from inputFile import inputLines
 
+# https://adventofcode.com/2015/day/6
+
 type Pair = List[int]
 type Mode = Literal["on", "off", "toggle"]
 type Bulbs = List[List[int]]

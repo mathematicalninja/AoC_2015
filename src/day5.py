@@ -4,6 +4,8 @@ from inputFile import inputLines
 
 vowels = ["a", "e", "i", "o", "u"]
 
+# https://adventofcode.com/2015/day/5
+
 
 def tripleVowel(line: str) -> bool:
     tally = 0

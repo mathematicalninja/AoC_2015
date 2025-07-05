@@ -3,6 +3,8 @@ from typing import Generator, Any
 
 from inputFile import inputLines
 
+# https://adventofcode.com/2015/day/2
+
 
 def lhw(line):
     first = line.find("x")
@@ -56,4 +58,3 @@ if __name__ == "__main__":
     lines2 = inputLines(2)
     print("part 2: ", part2(lines2))
     pass
-

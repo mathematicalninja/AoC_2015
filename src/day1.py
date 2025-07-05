@@ -2,6 +2,8 @@ from icecream import ic
 from inputFile import inputChars, inputLines
 from typing import Generator, Any
 
+# https://adventofcode.com/2015/day/1
+
 
 def part1(chars: Generator[str, Any, None]):
     currentFloor = 0
@@ -47,4 +49,3 @@ if __name__ == "__main__":
     # print("part 1: ", part1(lines))
     # print("part 2: ", part2(lines))
     pass
-

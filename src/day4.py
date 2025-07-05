@@ -3,6 +3,8 @@ import inputFile as inputFile
 from typing import Generator, Any
 from hashlib import md5
 
+# https://adventofcode.com/2015/day/4
+
 
 def part1(lines: Generator[str, Any, None]):
     i = 1
@@ -46,4 +48,3 @@ if __name__ == "__main__":
     lines2 = inputFile.inputLines(4)
     print("part 2: ", part2(lines2))
     pass
-

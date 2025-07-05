@@ -2,6 +2,8 @@ from icecream import ic
 from typing import Literal, Generator, Any
 from inputFile import inputChars
 
+# https://adventofcode.com/2015/day/3
+
 
 def gift(x: int, y: int, Logs: dict[int, dict[int, int]], total: int):
     try:
@@ -93,4 +95,3 @@ if __name__ == "__main__":
     print("part 1: ", part1(chars1))
     chars2 = inputChars(3)
     print("part 2: ", part2(chars2))
-

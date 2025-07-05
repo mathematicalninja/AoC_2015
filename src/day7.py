@@ -3,6 +3,7 @@ from typing import Generator, Any, Tuple, Literal, List
 
 from inputFile import inputLines
 
+# https://adventofcode.com/2015/day/7
 
 type Signals = dict[str, int]
 type Strength = int  # Int16
@@ -195,4 +196,3 @@ if __name__ == "__main__":
     lines2 = inputLines(7)
     print("part 2: ", part2(lines2))
     pass
-
