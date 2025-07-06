@@ -5,6 +5,18 @@ from inputFile import inputLines
 
 # https://adventofcode.com/2015/day/9
 
+type singleSteps = dict[str,dict[str,int]] # {start:{end: distance}}
+
+def getCities(line:str)->Tuple[str,str]:
+    pass
+
+def getDistance(line:str)->int:
+    pass
+
+def addPath(cities:Tuple[str,str], distance:int, steps: singleSteps)->singleSteps:
+    pass
+
+
 
 def part1(lines: Generator[str, Any, None]):
     # Note that the brute force method will calculate all possible paths which gives n!, with reversible directions this is n!/2.
