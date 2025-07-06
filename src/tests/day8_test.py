@@ -4,7 +4,7 @@ from os.path import isfile, join
 
 from src.inputFile import inputLines_example, inputLines
 
-from src.day8 import part1, part2, doubleSlash
+from src.day8 import part1, part2, doubleSlash, hexSlash
 
 testCases_part1:List[Tuple[str,int,int]]=[
 ("",2, 0),
@@ -28,6 +28,11 @@ class Functions(TestCase):
     def test_doubleSlash(self):
         self.assertEqual(doubleSlash("aa\\\\bb")[0], 1)
         self.assertEqual(doubleSlash("aa\\\\bb")[1], "aabb")
+
+    def test_hexSlash(self):
+        self.assertEqual(hexSlash("aa\\x00bb")[0],1)
+        self.assertEqual(hexSlash("aa\\x00bb")[1],"aabb")
+
 
 class Parts(TestCase):
     def test_part1(self):

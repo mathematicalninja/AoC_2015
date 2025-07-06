@@ -20,6 +20,21 @@ def doubleSlash(line)->Tuple[int,str]:
     return count, line
 
 
+def hexSlash(line)->Tuple[int,str]:
+    count = 0
+    # print("\\\\")
+    while True:
+        idx = line.find("\\x")
+        if(idx== -1):
+            break
+        count += 1
+        left = line[:idx]
+        right = line[idx+4:]
+        line = left+right
+    return count, line
+
+
+
 
 
 def part1(lines: Generator[str, Any, None]):
