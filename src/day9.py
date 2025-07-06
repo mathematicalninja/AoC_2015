@@ -1,5 +1,5 @@
 from icecream import ic
-from typing import Generator, Any
+from typing import Generator, Any, Tuple, List
 
 from inputFile import inputLines
 
@@ -15,6 +15,49 @@ def getDistance(line:str)->int:
 
 def addPath(cities:Tuple[str,str], distance:int, steps: singleSteps)->singleSteps:
     pass
+
+
+def permuteIndices_all(n:int)->List[List[int]]:
+    if n <= 1:
+        return [[1]]
+    # note this is 1 ==> n-1, dealing with n later
+    oldPerms = [[1]]
+    for i in range(2,n):
+        newPerms:List[List[int]] = []
+        for perm in oldPerms:
+            newPerms += insertM(perm,i)
+        oldPerms = newPerms
+
+    # dealing with n
+    newPerms = []
+    for perm in oldPerms:
+        newPerms += insertAfter(1,n,perm)
+    return newPerms
+    pass
+
+def insertM(perm:List[int], m:int)->List[List[int]]:
+    r = []
+    for i in range(len(perm)+1): # +1 allows appending to the perm
+        left = perm[i:]
+        right = perm[:i]
+        r.append(left+[m]+right)
+    return r
+
+def insertAfter(a:int,b:int,perm:List[int])->List[List[int]]:
+    """
+    @param a: number to be inserted after
+    @param b: number to be inserted
+    """
+    idxA =perm.index(a) # ValueError here if a is poorly defined.
+    uptoA = perm[:idxA+1]
+    afterA = perm[idxA+1:]
+    all = insertM(afterA,b)
+    r = []
+
+    for perm in all:
+        r.append(uptoA + perm)
+    return r
+
 
 
 
