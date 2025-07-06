@@ -145,9 +145,45 @@ def part1(lines: Generator[str, Any, None]):
 
 
 def part2(lines: Generator[str, Any, None]):
+    # Note that the brute force method will calculate all possible paths which gives n!, with reversible directions this is n!/2.
+    # In this case 8!/2 = 20160
+    # This is doable
+
+    # Note: to remove half the paths we can just say that the first city in the list if Always visited before the last city.
+    # Blah blah combinatorics...trivial.
+
+
+    citySet = set({})
+    cityList = []
+    cityDict = {}
+    distances:SingleSteps = []
+
+
+
     for line in lines:
+        CityA, CityB = getCities(line)
+
+        citySet.add(CityA)
+        citySet.add(CityB)
+
+        cityList,cityDict = cityAlias(CityA,cityList,cityDict)
+        cityList,cityDict = cityAlias(CityB,cityList,cityDict)
+
+        distance = getDistance(line)
+
+        idxA = cityDict[CityA]
+        idxB = cityDict[CityB]
+
+        distances = addPath((idxA, idxB),distance, distances)
         pass
-    pass
+
+    allPerms = permuteIndices_all(len(cityList))
+
+    r = []
+
+    for perm in allPerms:
+        r.append(fullPathLength(perm,distances))
+    return max(r)
 
 
 if __name__ == "__main__":
