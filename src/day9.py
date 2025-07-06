@@ -18,6 +18,19 @@ def addPath(cities:Tuple[str,str], distance:int, steps: singleSteps)->singleStep
     pass
 
 
+def cityAlias(city:str,idxToCity:List[str], cityToIdx:dict[str,int])\
+                            -> Tuple[List[str], dict[str,int]]:
+    if(city in cityToIdx.keys()):
+        return idxToCity,cityToIdx
+
+    idxToCity.append(city)
+    idx = idxToCity.index(city)
+    cityToIdx[city] = idx
+
+    return idxToCity,cityToIdx
+
+
+
 def permuteIndices_all(n:int)->List[List[int]]:
     if n <= 0:
         return [[0]]
