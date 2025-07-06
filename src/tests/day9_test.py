@@ -4,7 +4,7 @@ from os.path import isfile, join
 
 from src.inputFile import inputMultiLines_example, inputLines
 
-from src.day9 import part1, part2
+from src.day9 import part1, part2, getCities
 
 testCases_part1:List[Tuple[List[str],int]]=[
 ([
@@ -26,6 +26,14 @@ class Functions(TestCase):
 
     def tearDown(self) -> None:
         pass
+    def test_getCities(self)->None:
+        line = "London to Dublin = 464"
+        A,B = getCities(line)
+        with self.subTest(City=A):
+            self.assertEqual(A,"London")
+        with self.subTest(City=B):
+            self.assertEqual(B,"Dublin")
+
 
 class Parts(TestCase):
     def test_part1(self):
