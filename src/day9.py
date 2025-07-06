@@ -21,7 +21,7 @@ def getDistance(line:str)->int:
     r = int(line[idx:])
     return r
 
-def addPath(cities:Tuple[str,str], distance:int, steps: singleSteps)->singleSteps:
+def addPath(cities:Tuple[int,int], distance:int, steps: singleSteps)->singleSteps:
     pass
 
 
