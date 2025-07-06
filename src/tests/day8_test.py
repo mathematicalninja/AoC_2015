@@ -4,7 +4,7 @@ from os.path import isfile, join
 
 from src.inputFile import inputLines_example, inputLines
 
-from src.day8 import part1, part2, doubleSlash, hexSlash
+from src.day8 import part1, part2, doubleSlash, hexSlash,quoteSlash
 
 testCases_part1:List[Tuple[str,int,int]]=[
 ("",2, 0),
@@ -33,6 +33,10 @@ class Functions(TestCase):
         self.assertEqual(hexSlash("aa\\x00bb")[0],1)
         self.assertEqual(hexSlash("aa\\x00bb")[1],"aabb")
 
+
+    def test_quoteSlash(self):
+        self.assertEqual(quoteSlash("aa\\\"bb")[1],"aabb")
+        self.assertEqual(quoteSlash("aa\\\"bb")[0],1)
 
 class Parts(TestCase):
     def test_part1(self):

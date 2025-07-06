@@ -34,6 +34,18 @@ def hexSlash(line)->Tuple[int,str]:
     return count, line
 
 
+def quoteSlash(line)->Tuple[int,str]:
+    count = 0
+    # print("\\\\")
+    while True:
+        idx = line.find("\\\"")
+        if(idx== -1):
+            break
+        count += 1
+        left = line[:idx]
+        right = line[idx+2:]
+        line = left+right
+    return count, line
 
 
 
