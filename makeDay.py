@@ -199,6 +199,10 @@ def makeBlankAnswer(dayNum):
     try:
         with open(filePath, "x") as file:
             print(f"{filePath} created.")
+        with open(filePath, "w") as file:
+            file.writelines(["0","0"])
+            print(f"Blank answers added.")
+
     except:
         print(f"{filePath} already exists.")
         return
