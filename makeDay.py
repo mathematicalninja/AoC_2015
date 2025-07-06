@@ -115,19 +115,18 @@ def makeSrc(dayNum: int, format: formatTypes):
         with open(srcFile, "x"):
             pass
         shutil.copy(skeleton, srcFile)
+        try:
+            replaceDAYNUMBER(dayNum, srcFile)
+        except:
+            print("dayNumber replace failed for src")
+            return
     except:
         print(f"file already exists: '{srcFile}'")
         pass
-
-    try:
-        replaceDAYNUMBER(dayNum, srcFile)
-    except:
-        print("dayNumber replace failed for src")
-        return
-    removeFile("src", dayNum)
+    removeBackupFile("src", dayNum)
 
 
-def removeFile(type: Literal["src", "test"], dayNum):
+def removeBackupFile(type: Literal["src", "test"], dayNum):
     match type:
         case "src":
             srcPath = join("src", f"day{dayNum}.py.bak")
@@ -178,7 +177,7 @@ def makeTest(dayNum: int, fileFormat: formatTypes):
         print("replaceDAYNUMBER for test failed")
         return
     finally:
-        removeFile("test", dayNum)
+        removeBackupFile("test", dayNum)
 
     pass
 
