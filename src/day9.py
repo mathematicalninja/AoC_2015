@@ -5,7 +5,8 @@ from inputFile import inputLines
 
 # https://adventofcode.com/2015/day/9
 
-type singleSteps = dict[str,dict[str,int]] # {start:{end: distance}}
+# type singleSteps = dict[str,dict[str,int]] # {start:{end: distance}}
+type singleSteps =List[List[int]] # steps[start][end] = distance
 
 def getCities(line:str)->Tuple[str,str]:
     pass
@@ -18,11 +19,11 @@ def addPath(cities:Tuple[str,str], distance:int, steps: singleSteps)->singleStep
 
 
 def permuteIndices_all(n:int)->List[List[int]]:
-    if n <= 1:
-        return [[1]]
-    # note this is 1 ==> n-1, dealing with n later
-    oldPerms = [[1]]
-    for i in range(2,n):
+    if n <= 0:
+        return [[0]]
+    # note this is 0 ==> n-1, dealing with n later
+    oldPerms = [[0]]
+    for i in range(1,n):
         newPerms:List[List[int]] = []
         for perm in oldPerms:
             newPerms += insertM(perm,i)
