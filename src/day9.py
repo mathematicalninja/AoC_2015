@@ -11,9 +11,9 @@ type SingleSteps =List[List[int]] # steps[start][end] = distance
 def getCities(line:str)->Tuple[str,str]:
     idx1 = line.find(" ")
     cityA = line[:idx1]
-    idx2 = line.find(" ",idx1)+1
-    idx3 = line.find(" ",idx2)
-    cityB = line[idx2:idx3]
+    idx2 = line.find(" ",idx1+1)
+    idx3 = line.find(" ",idx2+1)
+    cityB = line[idx2+1:idx3]
     return cityA,cityB
 
 def getDistance(line:str)->int:
@@ -22,6 +22,15 @@ def getDistance(line:str)->int:
     return r
 
 def addPath(cities:Tuple[int,int], distance:int, steps: SingleSteps)->SingleSteps:
+    while len(steps)<max(cities[0],cities[1])+1:
+        steps.append([])
+
+    while len(steps[cities[0]])<cities[1]+1:
+        steps[cities[0]].append(2^8) # Note dataset maxes < 200
+
+    while len(steps[cities[1]])<cities[0]+1:
+        steps[cities[1]].append(2^8) # Note dataset maxes < 200
+
     steps[cities[0]][cities[1]] = distance
     steps[cities[1]][cities[0]] = distance
     return steps
