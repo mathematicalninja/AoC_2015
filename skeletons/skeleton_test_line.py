@@ -25,12 +25,14 @@ class Functions(TestCase):
 class Parts(TestCase):
     def test_part1(self):
         for case in testCases_part1:
-            # self.assertEqual(part1(inputLines_example(case[0])),case[1])
-            pass
+            with self.subTest(case=case):
+                # self.assertEqual(part1(inputLines_example(case[0])),case[1])
+                pass
     def test_part2(self):
         for case in testCases_part2:
-            # self.assertEqual(part2(inputLines_example(case[0])),case[1])
-            pass
+            with self.subTest(case=case):
+                # self.assertEqual(part2(inputLines_example(case[0])),case[1])
+                pass
 
 
 class Answers(TestCase):
