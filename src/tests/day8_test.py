@@ -7,14 +7,17 @@ from src.inputFile import inputLines_example, inputLines
 from src.day8 import part1, part2, doubleSlash, hexSlash,quoteSlash
 
 testCases_part1:List[Tuple[str,int,int]]=[
-('\"\"',2, 0),
-('\"abc\"',5,3),
-('\"aaa\\"aaa\"',10,7),
-('\"\\x27\"',6,1),
+('""',2, 0),
+('"abc"',5,3),
+('"aaa\\"aaa"',10,7),
+('"\\x27"',6,1),
 ]
 
 testCases_part2:List[Tuple[str,int]]=[
-
+('""',4),
+('"abc"',4),
+('"aaa\\"aaa"',6),
+('"\\x27"',5),
 ]
 
 
@@ -35,8 +38,8 @@ class Functions(TestCase):
 
 
     def test_quoteSlash(self):
-        self.assertEqual(quoteSlash("aa\\\"bb")[1],"aabb")
-        self.assertEqual(quoteSlash("aa\\\"bb")[0],1)
+        self.assertEqual(quoteSlash('aa\\"bb')[1],"aabb")
+        self.assertEqual(quoteSlash('aa\\"bb')[0],1)
 
 class Parts(TestCase):
     def test_part1(self):

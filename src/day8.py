@@ -99,21 +99,37 @@ def parseLine_1(line:str)->int:
     return count_code - count + 2 # +2 for the ""
 
 
+def increaseQuote(line:str)->Tuple[int,str]:
+    increases = 0
+    line = '"'+line+'"'
+    while True:
+        idx = line.find("\"")
+        if(idx== -1):
+            break
+        increases +=1
+        left = line[:idx]
+        right = line[idx+1:]
+        line = left+right
+    return increases, line
+
+def increaseSlash(line:str)->Tuple[int,str]:
+    increases = 0
+    while True:
+        idx = line.find("\\")
+        if(idx== -1):
+            break
+        increases +=1
+        left = line[:idx]
+        right = line[idx+1:]
+        line = left+right
+    return increases, line
+
+
 def parseLine_2(line:str)->int:
-    before_line = line
-    _ , before_line, countSlash_code  = doubleSlash(before_line)
-    _ , before_line, countHex_code= hexSlash(before_line)
-    _ ,before_line,  countQuote_code= quoteSlash(before_line)
-    count_before_letters = countLetters(before_line)
+    quote,line = increaseQuote(line)
+    slash, _= increaseSlash(line)
+    return quote+slash
 
-    count_before = count_before_letters+countSlash_code+countHex_code+countQuote_code
-
-    count_slash, line = encodeSlash(line) # Needs to be before quote
-    count_quote, line = encodeQuote(line)
-    count_after_letters = countLetters(line)
-
-    count_after = count_slash+count_quote+count_after_letters
-    return count_after-count_before
 
 def part1(lines: Generator[str, Any, None]):
     count = 0
