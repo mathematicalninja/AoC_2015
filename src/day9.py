@@ -22,7 +22,9 @@ def getDistance(line:str)->int:
     return r
 
 def addPath(cities:Tuple[int,int], distance:int, steps: singleSteps)->singleSteps:
-    pass
+    steps[cities[0]][cities[1]] = distance
+    steps[cities[1]][cities[0]] = distance
+    return steps
 
 
 def cityAlias(city:str,idxToCity:List[str], cityToIdx:dict[str,int])\
