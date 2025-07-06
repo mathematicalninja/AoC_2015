@@ -7,10 +7,10 @@ from src.inputFile import inputLines_example, inputLines
 from src.day8 import part1, part2, doubleSlash, hexSlash,quoteSlash
 
 testCases_part1:List[Tuple[str,int,int]]=[
-("",2, 0),
-("abc",5,3),
-("aaa\"aaa",10,7),
-("\x27",6,1)
+('\"\"',2, 0),
+('\"abc\"',5,3),
+('\"aaa\\"aaa\"',10,7),
+('\"\\x27\"',6,1),
 ]
 
 testCases_part2:List[Tuple[str,int]]=[
@@ -41,11 +41,15 @@ class Functions(TestCase):
 class Parts(TestCase):
     def test_part1(self):
         for case in testCases_part1:
-            self.assertEqual(part1(inputLines_example(case[0])),case[1])
+            with self.subTest(case=case):
+                p = part1(inputLines_example(case[0]))
+                diff = case[1]-case[2]
+                self.assertEqual(p,diff)
             pass
     def test_part2(self):
         for case in testCases_part2:
-            self.assertEqual(part2(inputLines_example(case[0])),case[1])
+            with self.subTest(case=case):
+                self.assertEqual(part2(inputLines_example(case[0])),case[1])
             pass
 
 
