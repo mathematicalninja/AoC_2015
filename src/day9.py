@@ -12,7 +12,9 @@ def getCities(line:str)->Tuple[str,str]:
     pass
 
 def getDistance(line:str)->int:
-    pass
+    idx = line.find("=")+2
+    r = int(line[idx:])
+    return r
 
 def addPath(cities:Tuple[str,str], distance:int, steps: singleSteps)->singleSteps:
     pass
