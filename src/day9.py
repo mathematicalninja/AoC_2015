@@ -6,7 +6,7 @@ from inputFile import inputLines
 # https://adventofcode.com/2015/day/9
 
 # type singleSteps = dict[str,dict[str,int]] # {start:{end: distance}}
-type singleSteps =List[List[int]] # steps[start][end] = distance
+type SingleSteps =List[List[int]] # steps[start][end] = distance
 
 def getCities(line:str)->Tuple[str,str]:
     idx1 = line.find(" ")
@@ -21,7 +21,7 @@ def getDistance(line:str)->int:
     r = int(line[idx:])
     return r
 
-def addPath(cities:Tuple[int,int], distance:int, steps: singleSteps)->singleSteps:
+def addPath(cities:Tuple[int,int], distance:int, steps: SingleSteps)->SingleSteps:
     steps[cities[0]][cities[1]] = distance
     steps[cities[1]][cities[0]] = distance
     return steps
@@ -92,15 +92,28 @@ def part1(lines: Generator[str, Any, None]):
     # Blah blah combinatorics...trivial.
 
 
-    cities = set({})
+    citySet = set({})
+    cityList = []
+    cityDict = {}
+    singleSteps:SingleSteps = []
 
-    singleSteps:dict[str,dict[str,int]] = {} # {start:{end: distance}}
+
 
     for line in lines:
         CityA, CityB = getCities(line)
+
+        citySet.add(CityA)
+        citySet.add(CityB)
+
+        cityList,cityDict = cityAlias(CityA,cityList,cityDict)
+        cityList,cityDict = cityAlias(CityB,cityList,cityDict)
+
         distance = getDistance(line)
-        cities.add(CityA)
-        cities.add(CityB)
+
+        idxA = cityDict[CityA]
+        idxB = cityDict[CityB]
+
+        singleSteps = addPath((idxA, idxB),distance, singleSteps)
         pass
     pass
 
