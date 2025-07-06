@@ -47,7 +47,11 @@ def quoteSlash(line)->Tuple[int,str]:
         line = left+right
     return count, line
 
-
+def parseLine(line:str)->int:
+    countSlash, line = doubleSlash(line)
+    countHex, line = hexSlash(line)
+    countQuote,line = quoteSlash(line)
+    return countHex + countQuote + countSlash
 
 def part1(lines: Generator[str, Any, None]):
     for line in lines:
