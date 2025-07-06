@@ -54,7 +54,7 @@ def permuteIndices_all(n:int)->List[List[int]]:
         return [[0]]
     # note this is 0 ==> n-1, dealing with n later
     oldPerms = [[0]]
-    for i in range(1,n):
+    for i in range(1,n-1):
         newPerms:List[List[int]] = []
         for perm in oldPerms:
             newPerms += insertM(perm,i)
@@ -63,7 +63,7 @@ def permuteIndices_all(n:int)->List[List[int]]:
     # dealing with n
     newPerms = []
     for perm in oldPerms:
-        newPerms += insertAfter(1,n,perm)
+        newPerms += insertAfter(1,n-1,perm)
     return newPerms
 
 def insertM(perm:List[int], m:int)->List[List[int]]:
