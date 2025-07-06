@@ -9,7 +9,12 @@ from inputFile import inputLines
 type singleSteps =List[List[int]] # steps[start][end] = distance
 
 def getCities(line:str)->Tuple[str,str]:
-    pass
+    idx1 = line.find(" ")
+    cityA = line[:idx1]
+    idx2 = line.find(" ",idx1)+1
+    idx3 = line.find(" ",idx2)
+    cityB = line[idx2:idx3]
+    return cityA,cityB
 
 def getDistance(line:str)->int:
     idx = line.find("=")+2
