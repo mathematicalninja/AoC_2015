@@ -3,8 +3,8 @@ from typing import Generator, Any
 
 from inputFile import inputLines
 
-https://adventofcode.com/2015/day/7
-https://adventofcode.com/2015/day/7/input
+# https://adventofcode.com/2015/day/7
+# https://adventofcode.com/2015/day/7/input
 
 
 def part1(lines: Generator[str, Any, None]):
