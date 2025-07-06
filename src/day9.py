@@ -81,6 +81,15 @@ def insertAfter(a:int,b:int,perm:List[int])->List[List[int]]:
     return r
 
 
+def fullPathLength(path:List[int],distances:SingleSteps):
+    dist = 0
+    indices = len(path)-1
+    for idx in range(indices):
+        CityA = path[idx]
+        CityB = path[idx+1]
+        dist += distances[CityA][CityB]
+    return dist
+
 
 
 def part1(lines: Generator[str, Any, None]):
