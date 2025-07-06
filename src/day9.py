@@ -34,7 +34,6 @@ def permuteIndices_all(n:int)->List[List[int]]:
     for perm in oldPerms:
         newPerms += insertAfter(1,n,perm)
     return newPerms
-    pass
 
 def insertM(perm:List[int], m:int)->List[List[int]]:
     r = []
