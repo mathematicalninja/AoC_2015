@@ -104,7 +104,7 @@ def part1(lines: Generator[str, Any, None]):
     citySet = set({})
     cityList = []
     cityDict = {}
-    singleSteps:SingleSteps = []
+    distances:SingleSteps = []
 
 
 
@@ -122,8 +122,16 @@ def part1(lines: Generator[str, Any, None]):
         idxA = cityDict[CityA]
         idxB = cityDict[CityB]
 
-        singleSteps = addPath((idxA, idxB),distance, singleSteps)
+        distances = addPath((idxA, idxB),distance, distances)
         pass
+
+    allPerms = permuteIndices_all(len(cityList))
+
+    r = []
+
+    for perm in allPerms:
+        r.append(fullPathLength(perm,distances))
+    return min(r)
     pass
 
 
