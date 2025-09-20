@@ -1,4 +1,5 @@
-from typing import Optional, List
+from os.path import join
+from typing import List
 
 
 def inputWhole(dayNum: int):
@@ -15,9 +16,6 @@ def inputWhole(dayNum: int):
         yield r
 
 
-from os.path import join
-
-
 def inputLines(dayNum: int):
     if dayNum:
         filePath = join("inputFiles", f"day{dayNum}.txt")
@@ -30,7 +28,9 @@ def inputLines(dayNum: int):
 
     idx = 0
     while idx < len(fileLines):
-        yield fileLines[idx]
+        # remove trailing newlines
+        line = fileLines[idx].replace("\n", "")
+        yield line
         idx += 1
     pass
 
@@ -65,8 +65,9 @@ def inputChar_example(exStr: str):
 
 
 def inputLines_example(exStr: str):
-    yield exStr
-    pass
+    # remove trailing newlines
+    line = exStr.replace("\n", "")
+    yield line
 
 
 def inputMultiLines_example(exStrArr: List[str]):
