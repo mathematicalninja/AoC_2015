@@ -24,7 +24,7 @@ def inputLines(dayNum: int):
         filePath = "input.txt"
 
     with open(filePath, "r") as file:
-        fileLines = file.readlines()
+        fileLines = file.read.splitlines()
 
     idx = 0
     while idx < len(fileLines):
