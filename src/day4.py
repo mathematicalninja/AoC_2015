@@ -1,5 +1,5 @@
 from icecream import ic
-import inputFile as inputFile
+import src.inputFile as inputFile
 from typing import Generator, Any
 from hashlib import md5
 
@@ -7,34 +7,32 @@ from hashlib import md5
 
 
 def part1(lines: Generator[str, Any, None]):
-    i = 1
+    i = 0
     for line in lines:
         while i < 2000000:
-            i = i + 1
             concated: str = line + str(i)
             Byted = str.encode(concated)
             hash = md5(Byted).hexdigest()
-            # print(line + str(i))
             hash_str = str(hash)
-            r = hash_str.startswith("00000")
+            r = hash_str.startswith("0" * 5)
             if r:
                 return i
+            i = i + 1
 
 
 def part2(lines: Generator[str, Any, None]):
-    i = 1
+    i = 0
     for line in lines:
         while True:
-            i = i + 1
             concated: str = line + str(i)
             Byted = str.encode(concated)
             hash = md5(Byted).hexdigest()
-            # print(line + str(i))
             hash_str = str(hash)
-            r = hash_str.startswith("000000")
+            r = hash_str.startswith("0" * 6)
             if r:
                 print(hash_str, i)
                 return i
+            i = i + 1
 
 
 if __name__ == "__main__":

@@ -4,4 +4,5 @@ __pycache__
 input.txt
 inputFiles
 .env
+env
 answers

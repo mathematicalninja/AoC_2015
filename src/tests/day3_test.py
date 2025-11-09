@@ -32,7 +32,7 @@ class Tests(TestCase):
             self.assertEqual(part1(fullinput), int(answer1.replace("\\n", "")))
 
         else:
-            pass
+            self.assertTrue(False)
 
     def test_answer2(self):
         answerPath = join("answers", "day3.txt")
@@ -45,5 +45,4 @@ class Tests(TestCase):
             self.assertEqual(part2(fullinput), int(answer2.replace("\\n", "")))
 
         else:
-            pass
-
+            self.assertTrue(False)

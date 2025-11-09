@@ -1,6 +1,6 @@
 from icecream import ic
 from typing import Literal, Generator, Any
-from inputFile import inputChars
+from src.inputFile import inputChars
 
 # https://adventofcode.com/2015/day/3
 
@@ -42,6 +42,7 @@ def move(
             return (0, 1)
         case "v":
             return (0, -1)
+    return (0, 0)
 
 
 def part1(chars: Generator[str, Any, None]):

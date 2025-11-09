@@ -1,7 +1,7 @@
 from icecream import ic
 from typing import Generator, Any
 
-from inputFile import inputLines
+from src.inputFile import inputLines
 
 # https://adventofcode.com/2015/day/2
 

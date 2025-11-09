@@ -6,18 +6,18 @@ from src.inputFile import inputMultiLines_example, inputLines
 
 from src.day9 import part1, part2, getCities
 
-testCases_part1:List[Tuple[List[str],int]]=[
-([
-    "London to Dublin = 464",
-    "London to Belfast = 518",
-    "Dublin to Belfast = 141",
-],
-    605
-)]
-
-testCases_part2:List[Tuple[List[str],int]]=[
-
+testCases_part1: List[Tuple[List[str], int]] = [
+    (
+        [
+            "London to Dublin = 464",
+            "London to Belfast = 518",
+            "Dublin to Belfast = 141",
+        ],
+        605,
+    )
 ]
+
+testCases_part2: List[Tuple[List[str], int]] = []
 
 
 class Functions(TestCase):
@@ -26,52 +26,54 @@ class Functions(TestCase):
 
     def tearDown(self) -> None:
         pass
-    def test_getCities(self)->None:
+
+    def test_getCities(self) -> None:
         line = "London to Dublin = 464"
-        A,B = getCities(line)
+        A, B = getCities(line)
         with self.subTest(City=A):
-            self.assertEqual(A,"London")
+            self.assertEqual(A, "London")
         with self.subTest(City=B):
-            self.assertEqual(B,"Dublin")
+            self.assertEqual(B, "Dublin")
 
 
 class Parts(TestCase):
     def test_part1(self):
         for case in testCases_part1:
             with self.subTest(case=case):
-                self.assertEqual(part1(inputMultiLines_example(case[0])),case[1])
+                self.assertEqual(part1(inputMultiLines_example(case[0])), case[1])
                 pass
+
     def test_part2(self):
         for case in testCases_part2:
             with self.subTest(case=case):
-                self.assertEqual(part2(inputMultiLines_example(case[0])),case[1])
+                self.assertEqual(part2(inputMultiLines_example(case[0])), case[1])
                 pass
+
 
 class Answers(TestCase):
     def test_answer1(self):
         answerPath = join("answers", "day9.txt")
         inputPath = join("inputFiles", "day9.txt")
         if isfile(answerPath) and isfile(inputPath):
-            with open (answerPath) as A:
+            with open(answerPath) as A:
                 answer1, answer2 = A.readlines()
             fullinput = inputLines(9)
 
-            self.assertEqual(part1(fullinput),int(answer1.replace("\\n","")))
-
+            self.assertEqual(part1(fullinput), int(answer1.replace("\\n", "")))
 
         else:
-            pass
+            self.assertTrue(False)
 
     def test_answer2(self):
         answerPath = join("answers", "day9.txt")
         inputPath = join("inputFiles", "day9.txt")
         if isfile(answerPath) and isfile(inputPath):
-            with open (answerPath) as A:
+            with open(answerPath) as A:
                 answer1, answer2 = A.readlines()
             fullinput = inputLines(9)
 
-            self.assertEqual(part2(fullinput),int(answer2.replace("\\n","")))
-
+            self.assertEqual(part2(fullinput), int(answer2.replace("\\n", "")))
 
         else:
-            pass
+            self.assertTrue(False)
+

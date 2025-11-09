@@ -1,7 +1,7 @@
 from icecream import ic
 from typing import Generator, Any, Literal, List, Tuple
 
-from inputFile import inputLines
+from src.inputFile import inputLines
 
 # https://adventofcode.com/2015/day/6
 
@@ -113,6 +113,16 @@ def actOnValue(value: int, action: Mode, part: Part) -> int:
                 case "toggle":
                     return value + 2
     pass
+    # # for fun, the following can be used to reduce the logic, at the cost of maths.
+    # match action:
+    #     case "off":
+    #         return (part - 1) * max(value - 1, 0)
+    #     case "on":
+    #         return (part - 1) * value + 1
+    #     case "toggle":
+    #         return (part - 1) * (value + 2) + (2 - part) * (1 - value)
+    #         # even more maths
+    #         return part * (2 * value + 1) - 3 * (value)
 
 
 def actOnCoord(coord: Pair, action: Mode, lightbulbs: Bulbs, part: Part) -> Bulbs:

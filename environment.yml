@@ -1,0 +1,6 @@
+name: AoC-2015
+dependencies:
+  - python>=3.13
+  - pip
+  - pip:
+    - icecream

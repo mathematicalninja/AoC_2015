@@ -1,6 +1,6 @@
 from typing import Generator, Any
 
-from inputFile import inputLines
+from src.inputFile import inputLines
 
 vowels = ["a", "e", "i", "o", "u"]
 
