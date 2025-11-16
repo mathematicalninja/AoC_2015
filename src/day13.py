@@ -83,15 +83,11 @@ def addValueToData(
         dataStruct[name2][name1] += happiness
 
 
-def part1(lines: Generator[str, Any, None]):
+def parseData(lines: Generator[str, Any, None]) -> dict[str, dict[str, int]]:
     dataLines: list[tuple[str, str, int]] = []
     for line in lines:
         dataLines.append(parseLine(line))
     pass
-
-    firstNames = [datum[0] for datum in dataLines]
-    secondNames = [datum[1] for datum in dataLines]
-    nameSet = set(firstNames + secondNames)
 
     dataStruct: dict[str, dict[str, int]] = {}
 
@@ -101,13 +97,13 @@ def part1(lines: Generator[str, Any, None]):
         happiness = line[2]
         addValueToData(name1, name2, happiness, dataStruct)
     pass
+    return dataStruct
 
-    names: list[str] = []
-    for name in nameSet:
-        names.append(name)
-    pass
 
-    count = len(nameSet)
+def calculateHappiness(dataStruct: dict[str, dict[str, int]]):
+    names: list[str] = [k for k in dataStruct.keys()]
+
+    count = len(names)
     permutations = permuteIndices_all(count)
 
     best = -inf
@@ -128,10 +124,19 @@ def part1(lines: Generator[str, Any, None]):
     return best
 
 
+def part1(lines: Generator[str, Any, None]):
+    dataStruct = parseData(lines)
+    return calculateHappiness(dataStruct)
+
+
 def part2(lines: Generator[str, Any, None]):
-    for line in lines:
-        pass
-    pass
+    dataStruct = parseData(lines)
+    names: list[str] = [k for k in dataStruct.keys()]
+    dataStruct["Me"] = {}
+    for name in names:
+        dataStruct[name]["Me"] = 0
+        dataStruct["Me"][name] = 0
+    return calculateHappiness(dataStruct)
 
 
 if __name__ == "__main__":
