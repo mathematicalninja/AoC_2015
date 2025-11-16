@@ -2,6 +2,7 @@ from icecream import ic
 from typing import Generator, Any, Tuple, List
 
 from src.inputFile import inputLines
+from src.utils.permute import permuteIndices_all
 
 # https://adventofcode.com/2015/day/9
 
@@ -50,49 +51,6 @@ def cityAlias(
     cityToIdx[city] = idx
 
     return idxToCity, cityToIdx
-
-
-def permuteIndices_all(n: int) -> List[List[int]]:
-    if n <= 0:
-        return [[0]]
-    # note this is 0 ==> n-1, dealing with n later
-    oldPerms = [[0]]
-    for i in range(1, n - 1):
-        newPerms: List[List[int]] = []
-        for perm in oldPerms:
-            newPerms += insertM(perm, i)
-        oldPerms = newPerms
-
-    # dealing with n
-    newPerms = []
-    for perm in oldPerms:
-        newPerms += insertAfter(1, n - 1, perm)
-    return newPerms
-
-
-def insertM(perm: List[int], m: int) -> List[List[int]]:
-    r = []
-    for i in range(len(perm) + 1):  # +1 allows appending to the perm
-        left = perm[i:]
-        right = perm[:i]
-        r.append(left + [m] + right)
-    return r
-
-
-def insertAfter(a: int, b: int, perm: List[int]) -> List[List[int]]:
-    """
-    @param a: number to be inserted after
-    @param b: number to be inserted
-    """
-    idxA = perm.index(a)  # ValueError here if a is poorly defined.
-    uptoA = perm[: idxA + 1]
-    afterA = perm[idxA + 1 :]
-    all = insertM(afterA, b)
-    r = []
-
-    for perm in all:
-        r.append(uptoA + perm)
-    return r
 
 
 def fullPathLength(path: List[int], distances: SingleSteps):
