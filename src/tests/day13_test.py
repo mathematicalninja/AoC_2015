@@ -5,9 +5,6 @@ from src.inputFile import inputLines_example, inputLines
 
 from src.day13 import (
     getFirstPerson,
-    getFirstSpace,
-    getNextSpace,
-    getNthSpace,
     getNumber,
     getSecondPerson,
     parseLine,
@@ -64,35 +61,6 @@ class Functions(TestCase):
 
         for c in checks:
             self.assertEqual(getSecondPerson(c[0]), c[1])
-        pass
-
-    def test_getFirstSpace(self) -> None:
-        checks: list[tuple[str, int]] = [("Hello World!", 5)]
-        for c in checks:
-            self.assertEqual(getFirstSpace(c[0]), c[1])
-        pass
-
-    def test_getNextSpace(self) -> None:
-        checks: list[tuple[str, int, int]] = [
-            ("Hello World!", 0, 5),
-            ("To be or not to be", 4, 5),
-            ("To be or not to be", 9, 12),
-        ]
-        for c in checks:
-            print(c[0])
-
-            self.assertEqual(getNextSpace(c[0], c[1]), c[2])
-        pass
-
-    def test_getNthSpace(self) -> None:
-        checks: list[tuple[str, int, int]] = [
-            ("Hello World!", 1, 5),
-            ("To be or not to be", 4, 12),
-        ]
-        for c in checks:
-            print(c[0])
-
-            self.assertEqual(getNthSpace(c[0], c[1]), c[2])
         pass
 
     def test_getNumber(self) -> None:

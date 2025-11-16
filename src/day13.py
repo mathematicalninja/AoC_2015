@@ -4,6 +4,7 @@ from typing import Generator, Any, Literal
 
 from src.inputFile import inputLines
 from src.utils.permute import permuteIndices_all
+from src.utils.spaces import getNthSpace
 
 # https://adventofcode.com/2015/day/13
 
@@ -15,35 +16,6 @@ def getFirstPerson(s: str):
 def getSecondPerson(s: str):
     space_idx: int = len(s) - s[::-1].find(" ")
     return s[space_idx:-1]
-
-
-def getFirstSpace(s: str) -> int:
-    # returns the index of the space itself.
-    # e.g. "Hello world!" -> 5
-    return s.find(" ")
-
-
-def getNextSpace(s: str, start: int | None) -> int:
-    if start is None:
-        start = 0
-    f = s[start:].find(" ")
-    if f == -1:
-        return -1
-    return f + start
-
-
-def getNthSpace(s: str, n: int) -> int:
-    if n == 0:
-        return -1
-
-    firstSpace = s.find(" ")
-    if firstSpace == -1 or n == 1:
-        return firstSpace
-
-    idx = firstSpace
-    for i in range(1, n):
-        idx = getNextSpace(s, idx + 1)
-    return idx
 
 
 def getNumber(s: str) -> int:
