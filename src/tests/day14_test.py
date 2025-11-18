@@ -4,7 +4,7 @@ from os.path import isfile, join
 
 from src.inputFile import inputMultiLines_example, inputLines
 
-from src.day14 import part1, part2
+from src.day14 import getName, part1, part2
 
 testCases_part1: List[Tuple[List[str], int, int]] = [
     (
@@ -40,7 +40,16 @@ testCases_part1: List[Tuple[List[str], int, int]] = [
     ),
 ]
 
-testCases_part2: List[Tuple[List[str], int, int]] = []
+testCases_part2: List[Tuple[List[str], int, int]] = [
+    (
+        [
+            "Comet can fly 14 km/s for 10 seconds, but then must rest for 127 seconds.",
+            "Dancer can fly 16 km/s for 11 seconds, but then must rest for 162 seconds.",
+        ],
+        1000,
+        689,
+    ),
+]
 
 
 class Functions(TestCase):
@@ -48,6 +57,22 @@ class Functions(TestCase):
         pass
 
     def tearDown(self) -> None:
+        pass
+
+    def test_getName(self) -> None:
+        cases = [
+            (
+                "Comet can fly 14 km/s for 10 seconds, but then must rest for 127 seconds.",
+                "Comet",
+            ),
+            (
+                "Dancer can fly 16 km/s for 11 seconds, but then must rest for 162 seconds.",
+                "Dancer",
+            ),
+        ]
+        for case in cases:
+            with self.subTest(case=case):
+                self.assertEqual(case[1], getName(case[0]))
         pass
 
 
@@ -63,7 +88,9 @@ class Parts(TestCase):
     def test_part2(self):
         for case in testCases_part2:
             with self.subTest(case=case):
-                self.assertEqual(part2(inputMultiLines_example(case[0])), case[1])
+                self.assertEqual(
+                    part2(inputMultiLines_example(case[0]), case[1]), case[2]
+                )
                 pass
 
 
@@ -90,7 +117,7 @@ class Answers(TestCase):
                 answer1, answer2 = A.read().splitlines()
             fullinput = inputLines(14)
 
-            self.assertEqual(part2(fullinput), int(answer2.replace("\\n", "")))
+            self.assertEqual(part2(fullinput, 2503), int(answer2.replace("\\n", "")))
 
         else:
             self.assertTrue(False)
